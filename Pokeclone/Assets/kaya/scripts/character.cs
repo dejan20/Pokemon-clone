@@ -22,4 +22,15 @@ public class character : MonoBehaviour
 
         characterController.Move(move * Time.deltaTime*Speed);
     }
+
+    #region test
+
+
+
+
+
+    #endregion
+
+
+
 }
