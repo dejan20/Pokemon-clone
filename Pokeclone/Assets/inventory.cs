@@ -20,12 +20,12 @@ public class inventory : MonoBehaviour
     #region playerINV
 
     public int munney;
-    
-
+    public int potions;
+    public int[] liinv;
 
     void playerinventory()
     {
-        
+              
         
 
 
