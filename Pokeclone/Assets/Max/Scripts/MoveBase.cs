@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveBase : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+[CreateAssetMenu(fileName = "Move", menuName = "Spirits/Create new move")]
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public class MoveBase : ScriptableObject
+{
+    [SerializeField] string name;
+
+    [TextArea] 
+    [SerializeField] string desription;
+
+    [SerializeField] SpiritType type;
+    [SerializeField] int power;
+    [SerializeField] int accuracy;
+    [SerializeField] public int PP;
 }
