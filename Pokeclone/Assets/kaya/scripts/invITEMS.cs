@@ -14,7 +14,14 @@ public abstract class invITEMS : ScriptableObject
 {
     public GameObject prefab;
     public ItemType type;
-    [TextArea(15,20)]
+    public string ItemName;
+    public int ItemAmount;
+
+    public int giveHpAmount;
+    public int giveMpAmount;
+    public int DmgAmount;
+    
+    [TextArea(10,15)]
     public string description;
 
 }

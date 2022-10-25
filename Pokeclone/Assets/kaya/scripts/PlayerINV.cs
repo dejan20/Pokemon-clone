@@ -3,41 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
-public class PlayerINV : MonoBehaviour  
+[CreateAssetMenu(fileName = "new Inventory", menuName = "Inventory SYS/INV" )]
+public class PlayerINV : ScriptableObject  
 {
-    public class Items : ScriptableObject
+    public List<InvSlot> Container = new List<InvSlot>();
+    public void AddItem(invITEMS _item, int _amount)
     {
-        [SerializeField]
-        GameObject[] itemsinInv;
-
-        
-        public string itemname = ("itemname");
-        public int amount = 0;
-        public void iNV()
+        bool hasitem = false;
+        for (int i =0; i < Container.Count; i++)
         {
-
-            Debug.Log("invvoid");
+            if (Container[i].item == _item)
+            {
+                Container[i].AddAmount(_amount);
+                hasitem = true;
+                break;
+            }
 
         }
-
-    } 
-
-    [SerializeField]
-    GameObject[] INVitems;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-
-        
-
+        if (!hasitem)
+        {
+            Container.Add(new InvSlot(_item, _amount));
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+}
 
+[System.Serializable]
+public class InvSlot
+{
+    public invITEMS item;
+    public int amount;
+    public InvSlot(invITEMS _item, int _amount)
+    {
+        item = _item;
+        amount = _amount;
+    }
+    public void AddAmount(int value)
+    {
+        amount += value;
     }
 }

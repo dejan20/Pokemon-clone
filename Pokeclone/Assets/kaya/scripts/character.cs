@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class character : MonoBehaviour
 {
+
+     public PlayerINV playerInv;
+
 
     private CharacterController characterController;
 
@@ -31,13 +35,7 @@ public class character : MonoBehaviour
 
     }
 
-    #region detect
-
-
-
-
-
-    #endregion
+    
 
 
 
