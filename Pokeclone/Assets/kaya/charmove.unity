@@ -3160,7 +3160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f078379de9f0d2b44a1da02fd5dc43e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  playerInv: {fileID: 11400000, guid: e1ebb26409b9fd74c806a28256f5a7ff, type: 2}
   Speed: 5
 --- !u!54 &1668698250
 Rigidbody:
