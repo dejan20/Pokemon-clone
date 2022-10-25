@@ -34,7 +34,7 @@ public class character : MonoBehaviour
 
 
     }
-
+    //hbj
     
 
 
