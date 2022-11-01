@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: new Inventory
   m_EditorClassIdentifier: 
   Container:
-  - item: {fileID: 0}
-    amount: 0
+  - item: {fileID: 11400000, guid: e9c41f5397321114f805512d29d0df34, type: 2}
+    amount: 1
   - item: {fileID: 0}
     amount: 0

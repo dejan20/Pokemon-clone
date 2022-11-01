@@ -12,7 +12,7 @@ public enum ItemType
 }
 public abstract class invITEMS : ScriptableObject
 {
-    public GameObject prefab;
+    public GameObject Object;
     public ItemType type;
     public string ItemName;
     public int ItemAmount;
