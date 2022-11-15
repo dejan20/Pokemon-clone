@@ -10,17 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84d821c6acf4ef9449c59461ec79b8a1, type: 3}
-  m_Name: Text
+  m_Name: No
   m_EditorClassIdentifier: 
-  dialogue:
-  - 'This is my dialogue!
-
-    Hello!'
-  - 'This is my dialogue!
-
-    Goodbye!'
-  responses:
-  - responseText: Yes
-    dialogueObject: {fileID: 11400000, guid: ffc065239a16b6f4d9a8c5159653fc42, type: 2}
-  - responseText: No
-    dialogueObject: {fileID: 11400000, guid: 6991c2159ddce8c46a4160a66b4dfe41, type: 2}
+  dialogue: []
+  responses: []

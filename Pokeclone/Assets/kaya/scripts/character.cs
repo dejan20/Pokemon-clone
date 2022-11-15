@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class character : MonoBehaviour
 {
+    [SerializeField] private DialogueUI dialogueUI;
 
     private CharacterController characterController;
 
     public float Speed = 5f;
 
+    public DialogueUI DialogueUI => dialogueUI;
 
+    public IInteractable Interactable { get; set;}
 
 
 
@@ -28,7 +31,13 @@ public class character : MonoBehaviour
 
         characterController.Move(move.normalized * Time.deltaTime*Speed);
 
-
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (Interactable != null)
+            {
+                Interactable.Interact(this);
+            }
+        }
     }
 
     #region detect
