@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BattleHud : MonoBehaviour
 {
-    [SerializeField] Text nameText;
-    [SerializeField] Text levelText;
+    [SerializeField] public TMP_Text nameText;
+    [SerializeField] public TMP_Text levelText;
     [SerializeField] HPBar hpBar;
 
-    public void SetData(Spirits Spirits)
+    public void SetData(Spirits s)
     {
-        nameText.text = Spirits.Base.Name;
-        levelText.text = "lvl" + Spirits.Level;
-        hpBar.SetHP((float) Spirits.HP / Spirits.MaxHP);
+//        nameText.text = s.Base.Name;
+//        levelText.text = "lvl." + s.Level;
+ //       hpBar.SetHP((float) s.HP / s.MaxHP);
     }
 }
