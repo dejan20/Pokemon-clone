@@ -56,7 +56,7 @@ public class BattleSystem2 : MonoBehaviour
         bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
 
         enemyHUD.SetHP(enemyUnit.currentHP);
-        Dialog.text = playerUnit.unitName + "hit " + enemyUnit.unitName " succesfully!";
+        Dialog.text = playerUnit.unitName + "hit " + enemyUnit.unitName + "succesfully!";
 
         yield return new WaitForSeconds(2f);
 
@@ -103,7 +103,7 @@ public class BattleSystem2 : MonoBehaviour
         }
         else if (state == BattleState.LOST)
         {
-            Dialog.text = enemyUnit.unitName "has defeated " + playerUnit.unitName "!";
+            Dialog.text = enemyUnit.unitName + "has defeated " + playerUnit.unitName + "!";
         }
     }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class character : MonoBehaviour
 {
+    public PlayerINV playerInv;
+
     [SerializeField] private DialogueUI dialogueUI;
 
     private CharacterController characterController;
