@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spirits 
+public class Spirits : MonoBehaviour
 {
     public SpiritsStats Base { get; set; }
+
     public int Level { get; set; }
 
     public int HP { get; set; }
