@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: testdia
   m_EditorClassIdentifier: 
   dialogue:
-  - 'moi
+  - 'Are you good today!
 
 '
   responses:
-  - responseText: mio
-    dialogueObject: {fileID: 0}
+  - responseText: Yes i am
+    dialogueObject: {fileID: 11400000, guid: ffc065239a16b6f4d9a8c5159653fc42, type: 2}
+  - responseText: No i am not
+    dialogueObject: {fileID: 11400000, guid: 6991c2159ddce8c46a4160a66b4dfe41, type: 2}

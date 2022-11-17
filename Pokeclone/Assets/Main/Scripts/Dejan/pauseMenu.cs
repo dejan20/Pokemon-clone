@@ -15,7 +15,7 @@ public class pauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (inventoryIsPaused)
             {
@@ -24,18 +24,6 @@ public class pauseMenu : MonoBehaviour
             else
             {
                 inventorymenu();
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-               Pause();
             }
         }
 
