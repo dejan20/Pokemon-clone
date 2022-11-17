@@ -39,15 +39,4 @@ public class character : MonoBehaviour
             }
         }
     }
-
-    #region detect
-
-
-
-
-
-    #endregion
-
-
-
 }
