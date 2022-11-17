@@ -111,9 +111,6 @@ public class MainMenu : MonoBehaviour
             }
         }
     }
-
-    // ----- Verschillende knop functies & startup setup -----
-
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
@@ -128,44 +125,8 @@ public class MainMenu : MonoBehaviour
 
     public void Level1()
     {
-        SceneManager.LoadScene("Level01");
-        Debug.Log("Loading level 1...");
-        Debug.Log("Entering PlayMode");
-        Background.SetActive(false);
-        PlayingGame = true;
+        SceneManager.LoadScene(1);
     }
-
-    public void Level2()
-    {
-        SceneManager.LoadScene("Level02");
-        Debug.Log("Loading level 2...");
-        Debug.Log("Entering PlayMode");
-        Background.SetActive(false);
-        PlayingGame = true;
-    }
-
-    // General button functions again
-
-    public void LeavingGame()
-    {
-        PlayingGame = false;
-        GameFinished = false;
-        Debug.Log("Exiting play mode");
-    }
-
-    public void QuitGame()
-    {
-        Debug.Log("Closing game...");
-        Application.Quit();
-    }
-
-    public void ReloadScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Debug.Log("Restarting level...");
-    }
-
-    // Just the toggle to turn on/off fullscreen
     public void Fullscrn(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;

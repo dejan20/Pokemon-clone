@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class pauseMenu : MonoBehaviour
 {
@@ -66,5 +67,9 @@ public class pauseMenu : MonoBehaviour
             inventoryIsPaused = true;
         GameIsPaused = false;
         pauseMenuUI.SetActive(false);
+    }
+    public void ClickToHome()
+    {
+        SceneManager.LoadScene(2);
     }
 }

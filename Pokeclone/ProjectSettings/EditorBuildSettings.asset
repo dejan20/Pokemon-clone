@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/OutdoorsScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
+  - enabled: 1
+    path: Assets/Dejan/Scene/Main.unity
+    guid: abd9733ab8c316b428fee935dfc7bdb7
+  - enabled: 1
+    path: Assets/Dejan/Scene/Main menu.unity
+    guid: c394b42c8411ab54e85d5730961cb4ca
   m_configObjects: {}
