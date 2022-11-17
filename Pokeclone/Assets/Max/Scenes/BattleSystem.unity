@@ -368,7 +368,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 152691190}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2122427819}
+        m_TargetAssemblyTypeName: BattleSystem2, Assembly-CSharp
+        m_MethodName: OnHealButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &152691190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1122,7 +1134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &811951212
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1749,7 +1761,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1225010303}
+      - m_Target: {fileID: 2122427819}
         m_TargetAssemblyTypeName: BattleSystem2, Assembly-CSharp
         m_MethodName: OnAttackButton
         m_Mode: 1
@@ -1809,13 +1821,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1225010304}
   - component: {fileID: 1225010303}
+  - component: {fileID: 1225010305}
   m_Layer: 0
   m_Name: BattleSystem2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1225010303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1851,6 +1864,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1225010305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225010302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95af0c0467ad4d5428ea0648ad8ae6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerUnit: {fileID: 1867746487}
+  enemyUnit: {fileID: 11897307}
+  playerHud: {fileID: 0}
+  enemyHud: {fileID: 0}
+  dialogBox: {fileID: 1645256618}
 --- !u!1 &1249824799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,7 +2005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1130742346}
   levelText: {fileID: 1535488361}
-  hpSlider: {fileID: 0}
+  hpSlider: {fileID: 1647518244}
 --- !u!1 &1321257405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1993,7 +2023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1321257406
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2067,7 +2097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1408925042
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2104,7 +2134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1502117681
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3345,7 +3375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2122427817}
-  - component: {fileID: 2122427818}
+  - component: {fileID: 2122427819}
   m_Layer: 0
   m_Name: BattleSystem
   m_TagString: Untagged
@@ -3370,7 +3400,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2122427818
+--- !u!114 &2122427819
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3379,14 +3409,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2122427816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95af0c0467ad4d5428ea0648ad8ae6aa, type: 3}
+  m_Script: {fileID: 11500000, guid: d1b4e8f621c68394b97e4f897e957fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUnit: {fileID: 1867746487}
-  enemyUnit: {fileID: 11897307}
-  playerHud: {fileID: 0}
-  enemyHud: {fileID: 0}
-  dialogBox: {fileID: 1645256618}
+  playerPrefab: {fileID: 1867746483}
+  enemyPrefab: {fileID: 11897303}
+  playerBattleStation: {fileID: 1249824800}
+  enemyBattleStation: {fileID: 405693468}
+  Dialog: {fileID: 201533437}
+  playerHUD: {fileID: 1661646452}
+  enemyHUD: {fileID: 1270116452}
+  state: 0
 --- !u!1001 &2714634250249555824
 PrefabInstance:
   m_ObjectHideFlags: 0

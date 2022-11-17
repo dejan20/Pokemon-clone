@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInv: {fileID: 0}
+  dialogueUI: {fileID: 534460623}
   Speed: 5
 --- !u!54 &315579202
 Rigidbody:
@@ -1062,6 +1063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26389f6ad8009d746a2cd502d5bde2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueObject: {fileID: 11400000, guid: d71e3bdb5d0a22649b953858795fb0df, type: 2}
 --- !u!135 &1105808265
 SphereCollider:
   m_ObjectHideFlags: 0
