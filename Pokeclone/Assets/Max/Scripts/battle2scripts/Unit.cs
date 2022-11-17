@@ -7,7 +7,7 @@ public class Unit : MonoBehaviour
     public string unitName;
     public int unitLevel;
 
-    public int Damage;
+    public int damage;
 
     public int maxHP;
     public int currentHP;

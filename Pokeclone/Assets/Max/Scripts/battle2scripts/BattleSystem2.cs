@@ -53,7 +53,7 @@ public class BattleSystem2 : MonoBehaviour
 
     IEnumerator PlayerAttack()
     {
-        bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+        bool isDead = enemyUnit.TakeDamage(5);
 
         enemyHUD.SetHP(enemyUnit.currentHP);
         Dialog.text = playerUnit.unitName + "hit " + enemyUnit.unitName + "succesfully!";

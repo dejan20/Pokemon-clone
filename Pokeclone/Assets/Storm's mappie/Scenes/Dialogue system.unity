@@ -387,10 +387,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 315579199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f078379de9f0d2b44a1da02fd5dc43e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e751728e4327824eb4e7b6dfe3be337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueUI: {fileID: 534460623}
+  playerInv: {fileID: 0}
   Speed: 5
 --- !u!54 &315579202
 Rigidbody:
@@ -1062,7 +1062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26389f6ad8009d746a2cd502d5bde2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: d71e3bdb5d0a22649b953858795fb0df, type: 2}
 --- !u!135 &1105808265
 SphereCollider:
   m_ObjectHideFlags: 0
