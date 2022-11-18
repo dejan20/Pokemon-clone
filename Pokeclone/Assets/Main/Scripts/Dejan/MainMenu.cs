@@ -67,4 +67,10 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Closing game");
         Application.Quit();
     }
+
+    public void startdemo()
+    {
+        SceneManager.LoadScene(4);
+    }
+
 }
