@@ -22,7 +22,7 @@ public class RandomEncounter : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        InvokeRepeating("RandomEncounterSystem", 0, 2);
+        InvokeRepeating("RandomEncounterSystem", MinRandomRange, MaxRandomRange);
 
 
     }
