@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class INventory : MonoBehaviour
 {
+
+    public GameObject prefab;
     [SerializeField] List<GameObject> Itemslist;
     public void Inv()
     {
@@ -14,13 +16,8 @@ public class INventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        void Start()
-        {
-         
-            Itemslist = new List<GameObject>();
 
-
-        }
+        Itemslist = new List<GameObject>();
 
 
 
@@ -29,6 +26,11 @@ public class INventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Itemslist.Add((GameObject)Instantiate(prefab));
+            
+        }
+
     }
 }
