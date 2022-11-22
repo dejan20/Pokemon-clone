@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class character : MonoBehaviour
 {
-    public PlayerINV playerInv;
+    
 
     [SerializeField] private DialogueUI dialogueUI;
 
@@ -12,6 +12,9 @@ public class character : MonoBehaviour
 
     public float Speed = 5f;
 
+    public float run = 10f;
+
+    public bool hasshoes = false;
     public DialogueUI DialogueUI => dialogueUI;
 
     public IInteractable Interactable { get; set;}
@@ -33,6 +36,11 @@ public class character : MonoBehaviour
 
         characterController.Move(move.normalized * Time.deltaTime*Speed);
 
+        if (Input.GetKey(KeyCode.LeftShift)&& hasshoes)
+        {
+            characterController.Move(move.normalized * Time.deltaTime * run);
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (Interactable != null)
@@ -40,5 +48,7 @@ public class character : MonoBehaviour
                 Interactable.Interact(this);
             }
         }
+
+
     }
 }
