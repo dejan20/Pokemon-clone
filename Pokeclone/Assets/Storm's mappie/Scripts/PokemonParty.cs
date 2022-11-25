@@ -9,7 +9,7 @@ public class PokemonParty : MonoBehaviour
     [SerializeField] public List<GameObject> spiritList;
     [SerializeField] private master master;
     [SerializeField] private PokemonPartyUI pokemonPartyUI;
-
+    int i = 0;
     void Start()
     {
         spiritList = new List<GameObject>(5);
@@ -21,7 +21,8 @@ public class PokemonParty : MonoBehaviour
         {
             Debug.Log("You added a Spirit");
             spiritList.Add(master.allSpiritList[1]);
-            pokemonPartyUI.SpiritPartyImages(0);
+            pokemonPartyUI.SpiritPartyImages(i);
+            i++;
         }
         if (spiritList.Count > 5)
         {

@@ -484,6 +484,11 @@ PrefabInstance:
       propertyPath: playerBattleStation
       value: 
       objectReference: {fileID: 1249824800}
+    - target: {fileID: 5029484319160956092, guid: 338721b9d641a314c832717030da463b,
+        type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5029484319664241402, guid: 338721b9d641a314c832717030da463b,
         type: 3}
       propertyPath: m_AnchorMax.y
