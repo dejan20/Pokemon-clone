@@ -11,6 +11,8 @@ public class BattleSystem2 : MonoBehaviour
 
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
+    GameObject enemy;
+    GameObject player;
 
     [SerializeField] public GameObject heal;
     [SerializeField] public GameObject fight;
@@ -39,10 +41,16 @@ public class BattleSystem2 : MonoBehaviour
     {
         state = BattleState.START;
         StartCoroutine(SetupBattle());
+
     }
 
     IEnumerator SetupBattle()
     {
+        enemy = GameObject.Find("enemy");
+        enemyPrefab = enemy.transform.GetChild(0).gameObject;
+        player = GameObject.Find("player");
+        playerPrefab = player.transform.GetChild(0).gameObject;
+
         GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
         playerUnit = playerGO.GetComponent<Unit>();
 
