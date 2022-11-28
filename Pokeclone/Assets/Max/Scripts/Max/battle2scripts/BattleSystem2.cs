@@ -12,6 +12,15 @@ public class BattleSystem2 : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
 
+    [SerializeField] public GameObject heal;
+    [SerializeField] public GameObject fight;
+    [SerializeField] public GameObject bag;
+    [SerializeField] public GameObject flee;
+    [SerializeField] public GameObject dialogueText;
+
+    [SerializeField] public GameObject ActionSelector;
+    [SerializeField] public GameObject Back;
+
     public Transform playerBattleStation;
     public Transform enemyBattleStation;
 
@@ -53,7 +62,8 @@ public class BattleSystem2 : MonoBehaviour
 
     IEnumerator PlayerAttack()
     {
-        bool isDead = enemyUnit.TakeDamage(5);
+
+        bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
 
         enemyHUD.SetHP(enemyUnit.currentHP);
         Dialog.text = playerUnit.unitName + " hit " + enemyUnit.unitName + " succesfully!";
@@ -63,6 +73,7 @@ public class BattleSystem2 : MonoBehaviour
         if (isDead)
         {
             state = BattleState.WON;
+            EndBattle();
         }
         else
         {
@@ -70,7 +81,7 @@ public class BattleSystem2 : MonoBehaviour
             StartCoroutine(EnemyTurn());
         }
     }
-    
+
     IEnumerator EnemyTurn()
     {
         Dialog.text = enemyUnit.unitName + " attacks!";
@@ -78,7 +89,7 @@ public class BattleSystem2 : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
-        
+
         playerHUD.SetHP(playerUnit.currentHP);
 
         yield return new WaitForSeconds(1f);
@@ -97,7 +108,7 @@ public class BattleSystem2 : MonoBehaviour
 
     void EndBattle()
     {
-        if(state == BattleState.WON)
+        if (state == BattleState.WON)
         {
             Dialog.text = "You win!";
         }
@@ -131,6 +142,27 @@ public class BattleSystem2 : MonoBehaviour
             return;
 
         StartCoroutine(PlayerAttack());
+
+        heal.SetActive(false);
+        fight.SetActive(false);
+        flee.SetActive(false);
+        bag.SetActive(false);
+        dialogueText.SetActive(false);
+
+        ActionSelector.SetActive(true);
+        dialogueText.SetActive(true);
+        Dialog.text = "Choose your move:";
+    }
+
+    public void OnBackButton()
+    {
+        heal.SetActive(true);
+        fight.SetActive(true);
+        flee.SetActive(true);
+        bag.SetActive(true);
+        ActionSelector.SetActive(false);
+
+        Dialog.text = "what do you do?";
     }
 
     public void OnHealButton()
