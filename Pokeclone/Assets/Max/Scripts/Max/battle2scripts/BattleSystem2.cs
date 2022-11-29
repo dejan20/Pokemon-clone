@@ -51,7 +51,7 @@ public class BattleSystem2 : MonoBehaviour
     IEnumerator SetupBattle()
     {
         character = GameObject.Find("character");
-        pokemonParty.transform.Find("character");
+        //pokemonParty = character;
         spiritPrefab = pokemonParty.spiritList[0];
         Instantiate(spiritPrefab);
 
