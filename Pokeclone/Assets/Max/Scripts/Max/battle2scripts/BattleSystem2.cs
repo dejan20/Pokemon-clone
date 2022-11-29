@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
@@ -13,6 +14,10 @@ public class BattleSystem2 : MonoBehaviour
     public GameObject enemyPrefab;
     GameObject enemy;
     GameObject player;
+
+    [SerializeField] GameObject character;
+    [SerializeField] PokemonParty pokemonParty;
+    [SerializeField] GameObject spiritPrefab;
 
     [SerializeField] public GameObject heal;
     [SerializeField] public GameObject fight;
@@ -41,11 +46,15 @@ public class BattleSystem2 : MonoBehaviour
     {
         state = BattleState.START;
         StartCoroutine(SetupBattle());
-
     }
 
     IEnumerator SetupBattle()
     {
+        character = GameObject.Find("character");
+        pokemonParty.transform.Find("character");
+        spiritPrefab = pokemonParty.spiritList[0];
+        Instantiate(spiritPrefab);
+
         enemy = GameObject.Find("enemy");
         enemyPrefab = enemy.transform.GetChild(0).gameObject;
         player = GameObject.Find("player");
@@ -119,6 +128,9 @@ public class BattleSystem2 : MonoBehaviour
         if (state == BattleState.WON)
         {
             Dialog.text = "You win!";
+            new WaitForSeconds(5f);
+            SceneManager.LoadScene(4);
+            Debug.Log("Back to MainScene");
         }
         else if (state == BattleState.LOST)
         {
@@ -179,5 +191,14 @@ public class BattleSystem2 : MonoBehaviour
             return;
 
         StartCoroutine(PlayerHeal());
+    }
+
+    public void OnFleeButton()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+
+        SceneManager.LoadScene(4);
+        Debug.Log("Back to MainScene");
     }
 }

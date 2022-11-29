@@ -12,7 +12,9 @@ public class PokemonParty : MonoBehaviour
     int i = 0;
     void Start()
     {
+        
         spiritList = new List<GameObject>(5);
+        
     }
     
     void Update()
