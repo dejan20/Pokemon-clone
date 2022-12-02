@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class INventory : MonoBehaviour
 {
-
-    public GameObject prefab;
-    [SerializeField] List<GameObject> Itemslist;
+    public int INVsize;
+    public GameObject item;
+    
+    [SerializeField] List<GameObject> ItemsList;
     public void Inv()
     {
 
@@ -17,19 +18,25 @@ public class INventory : MonoBehaviour
     void Start()
     {
 
-        Itemslist = new List<GameObject>();
+        
+        ItemsList = new List<GameObject>();
 
 
 
     }
 
-    // Update is called once per frame
+  
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Itemslist.Add((GameObject)Instantiate(prefab));
+            ItemsList.Add((GameObject)(item));
             
+            if (ItemsList.Count > INVsize)
+            {
+                Debug.Log("bigger than MAX SIZE");
+                ItemsList.RemoveAt(INVsize);
+            }
         }
 
     }
