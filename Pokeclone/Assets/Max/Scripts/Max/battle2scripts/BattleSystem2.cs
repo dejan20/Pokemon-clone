@@ -16,7 +16,7 @@ public class BattleSystem2 : MonoBehaviour
     GameObject player;
 
     [SerializeField] GameObject character;
-    [SerializeField] PokemonParty pokemonParty;
+    [SerializeField] PokemonParty pokemonParty = new PokemonParty();
     [SerializeField] GameObject spiritPrefab;
 
     [SerializeField] public GameObject heal;
@@ -41,11 +41,18 @@ public class BattleSystem2 : MonoBehaviour
 
     public BattleState state;
 
+    void Awake(){
+
+    pokemonParty = GameObject.Find("character").GetComponent<PokemonParty>();
+    spiritPrefab = pokemonParty.spiritList[0];
+
+    }
     // Start is called before the first frame update
     void Start()
     {
         state = BattleState.START;
         StartCoroutine(SetupBattle());
+
     }
 
     IEnumerator SetupBattle()
@@ -53,13 +60,15 @@ public class BattleSystem2 : MonoBehaviour
         character = GameObject.Find("character");
         
         //pokemonParty = character;
-        spiritPrefab = pokemonParty.spiritList[0];
-        Instantiate(spiritPrefab);
+        spiritPrefab = pokemonParty.spiritList[0].gameObject;
+        spiritPrefab = Instantiate(spiritPrefab);
 
         enemy = GameObject.Find("enemy");
         enemyPrefab = enemy.transform.GetChild(0).gameObject;
-        player = GameObject.Find("player");
-        playerPrefab = player.transform.GetChild(0).gameObject;
+        //player = GameObject.Find("player");
+        //playerPrefab = player.transform.GetChild(0).gameObject;
+        playerPrefab = spiritPrefab;
+
 
         GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
         playerUnit = playerGO.GetComponent<Unit>();

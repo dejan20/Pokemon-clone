@@ -6,14 +6,15 @@ public class PokemonParty : MonoBehaviour
 {
 
     //List<GameObject> spiritList;
-    [SerializeField] public List<GameObject> spiritList;
+    [SerializeField] public List<GameObject> spiritList  = new List<GameObject>(5);
     [SerializeField] private master master;
     [SerializeField] private PokemonPartyUI pokemonPartyUI;
     int i = 0;
-    void Start()
+
+    void Awake()
     {
         
-        spiritList = new List<GameObject>(5);
+       //spiritList = new List<GameObject>(5);
         
     }
     
