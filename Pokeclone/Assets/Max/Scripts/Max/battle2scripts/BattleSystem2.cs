@@ -68,16 +68,12 @@ public class BattleSystem2 : MonoBehaviour
     {
         character = GameObject.Find("character");
         
-        //pokemonParty = character;
         spiritPrefabPlayer = pokemonParty.spiritList[0].gameObject;
         spiritPrefabPlayer = Instantiate(spiritPrefabPlayer);
 
         spiritPrefabEnemy = master.allSpiritList[Random.Range(1,3)].gameObject;
         spiritPrefabEnemy = Instantiate(spiritPrefabEnemy);
-        //enemy = GameObject.Find("enemy");
-        //enemyPrefab = enemy.transform.GetChild(0).gameObject;
-        //player = GameObject.Find("player");
-        //playerPrefab = player.transform.GetChild(0).gameObject;
+
         playerPrefab = spiritPrefabPlayer;
         enemyPrefab = spiritPrefabEnemy;
 
