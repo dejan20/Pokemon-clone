@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1422228730286822214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1422228730286822208}
+  - component: {fileID: 1422228730286822209}
+  - component: {fileID: 1422228730286822211}
+  - component: {fileID: 1422228730286822210}
+  m_Layer: 0
+  m_Name: master
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1422228730286822208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422228730286822214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.592247, y: 2.5666358, z: -5.98726}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1422228730286822209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422228730286822214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7463e1dcb2c1a5447a44fe436054f86d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenwidth: 256
+  screenheight: 192
+  allSpiritList:
+  - {fileID: 3259229871851333661, guid: 3ee33297a1f90434b8a9d9f933889db4, type: 3}
+  - {fileID: 3259229871851333661, guid: b2816274197c7394693016b7c85c166c, type: 3}
+  - {fileID: 3259229871851333661, guid: cfe824904d80a6143ba6f1337a8761fa, type: 3}
+--- !u!114 &1422228730286822211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422228730286822214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e610f6fadc1b646bf36f1a5349dc2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsGrass:
+    serializedVersion: 2
+    m_Bits: 64
+  MaxRandomRange: 10
+  MinRandomRange: 0
+  battlescene: 3
+  DetectDistance: 10
+--- !u!114 &1422228730286822210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422228730286822214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3fe8cd922f3244daa35d2faa448791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
