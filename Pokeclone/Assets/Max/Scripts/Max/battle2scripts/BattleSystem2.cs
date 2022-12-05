@@ -10,14 +10,19 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class BattleSystem2 : MonoBehaviour
 {
 
+
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
     GameObject enemy;
     GameObject player;
 
+    [SerializeField] private master master = new master();
     [SerializeField] GameObject character;
     [SerializeField] PokemonParty pokemonParty = new PokemonParty();
-    [SerializeField] GameObject spiritPrefab;
+    [SerializeField] GameObject spiritPrefabPlayer;
+    [SerializeField] GameObject spiritPrefabEnemy;
+    [SerializeField] GameObject randomPokemon;
+
 
     [SerializeField] public GameObject heal;
     [SerializeField] public GameObject fight;
@@ -41,11 +46,15 @@ public class BattleSystem2 : MonoBehaviour
 
     public BattleState state;
 
-    void Awake(){
+    void Awake()
+    {
 
-    pokemonParty = GameObject.Find("character").GetComponent<PokemonParty>();
-    spiritPrefab = pokemonParty.spiritList[0];
 
+        pokemonParty = GameObject.Find("character").GetComponent<PokemonParty>();
+        spiritPrefabPlayer = pokemonParty.spiritList[0];
+        
+        master = GameObject.Find("master").GetComponent<master>();
+        spiritPrefabEnemy = master.allSpiritList[Random.Range(0,2)];
     }
     // Start is called before the first frame update
     void Start()
@@ -60,14 +69,17 @@ public class BattleSystem2 : MonoBehaviour
         character = GameObject.Find("character");
         
         //pokemonParty = character;
-        spiritPrefab = pokemonParty.spiritList[0].gameObject;
-        spiritPrefab = Instantiate(spiritPrefab);
+        spiritPrefabPlayer = pokemonParty.spiritList[0].gameObject;
+        spiritPrefabPlayer = Instantiate(spiritPrefabPlayer);
 
-        enemy = GameObject.Find("enemy");
-        enemyPrefab = enemy.transform.GetChild(0).gameObject;
+        spiritPrefabEnemy = master.allSpiritList[Random.Range(1,3)].gameObject;
+        spiritPrefabEnemy = Instantiate(spiritPrefabEnemy);
+        //enemy = GameObject.Find("enemy");
+        //enemyPrefab = enemy.transform.GetChild(0).gameObject;
         //player = GameObject.Find("player");
         //playerPrefab = player.transform.GetChild(0).gameObject;
-        playerPrefab = spiritPrefab;
+        playerPrefab = spiritPrefabPlayer;
+        enemyPrefab = spiritPrefabEnemy;
 
 
         GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
