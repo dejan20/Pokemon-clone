@@ -12,5 +12,14 @@ public class MainManager : MonoBehaviour
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 }

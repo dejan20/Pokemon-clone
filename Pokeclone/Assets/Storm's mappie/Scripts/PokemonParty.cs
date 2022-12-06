@@ -13,13 +13,14 @@ public class PokemonParty : MonoBehaviour
 
     void Awake()
     {
-        
-       //spiritList = new List<GameObject>(5);
-        
+        //spiritList = new List<GameObject>(5);
+        Debug.Log("Test35");
+        pokemonPartyUI = GameObject.Find("Pokemon Inventory").GetComponent<PokemonPartyUI>();
     }
     
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("You added a Spirit");

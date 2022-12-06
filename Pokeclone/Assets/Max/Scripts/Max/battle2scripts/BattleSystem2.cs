@@ -10,7 +10,6 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class BattleSystem2 : MonoBehaviour
 {
 
-
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
     GameObject enemy;
@@ -19,9 +18,13 @@ public class BattleSystem2 : MonoBehaviour
     [SerializeField] private master master = new master();
     [SerializeField] GameObject character;
     [SerializeField] PokemonParty pokemonParty = new PokemonParty();
+
     [SerializeField] GameObject spiritPrefabPlayer;
     [SerializeField] GameObject spiritPrefabEnemy;
     [SerializeField] GameObject randomPokemon;
+    GameObject pokemonPartyUI;
+
+    int randomSpiritInt;
 
 
     [SerializeField] public GameObject heal;
@@ -48,13 +51,15 @@ public class BattleSystem2 : MonoBehaviour
 
     void Awake()
     {
-
+        randomSpiritInt = Random.Range(1,3);
 
         pokemonParty = GameObject.Find("character").GetComponent<PokemonParty>();
         spiritPrefabPlayer = pokemonParty.spiritList[0];
-        
+
+        pokemonPartyUI = GameObject.Find("Pokemon Inventory");
+
         master = GameObject.Find("master").GetComponent<master>();
-        spiritPrefabEnemy = master.allSpiritList[Random.Range(0,2)];
+        spiritPrefabEnemy = master.allSpiritList[randomSpiritInt];
     }
     // Start is called before the first frame update
     void Start()
@@ -67,12 +72,14 @@ public class BattleSystem2 : MonoBehaviour
 
     IEnumerator SetupBattle()
     {
+        pokemonPartyUI.SetActive(false);
+
         character = GameObject.Find("character");
         
         spiritPrefabPlayer = pokemonParty.spiritList[0].gameObject;
         spiritPrefabPlayer = Instantiate(spiritPrefabPlayer);
 
-        spiritPrefabEnemy = master.allSpiritList[Random.Range(1,3)].gameObject;
+        spiritPrefabEnemy = master.allSpiritList[randomSpiritInt].gameObject;
         spiritPrefabEnemy = Instantiate(spiritPrefabEnemy);
 
         playerPrefab = spiritPrefabPlayer;
@@ -148,6 +155,7 @@ public class BattleSystem2 : MonoBehaviour
         {
             Dialog.text = "You win!";
             new WaitForSeconds(5f);
+            pokemonPartyUI.SetActive(false);
             SceneManager.LoadScene(4);
             Debug.Log("Back to MainScene");
         }
@@ -162,17 +170,19 @@ public class BattleSystem2 : MonoBehaviour
         Dialog.text = "what do you do? ";
     }
 
-    IEnumerator PlayerHeal()
+    IEnumerator PlayerCatch()
     {
-        playerUnit.Heal(5);
+        //playerUnit.Heal(5);
 
-        playerHUD.SetHP(playerUnit.currentHP);
-        Dialog.text = playerUnit.unitName + " feels a lot better!";
+        
+        Dialog.text = enemyUnit.unitName + " has been catched!";
+
+        pokemonParty.spiritList.Add(master.allSpiritList[randomSpiritInt]);
 
         yield return new WaitForSeconds(2f);
 
-        state = BattleState.ENEMYTURN;
-        StartCoroutine(EnemyTurn());
+        pokemonPartyUI.SetActive(true);
+        SceneManager.LoadScene(5);
     }
 
     public void OnAttackButton()
@@ -204,12 +214,12 @@ public class BattleSystem2 : MonoBehaviour
         Dialog.text = "what do you do?";
     }
 
-    public void OnHealButton()
+    public void OnCatchButton()
     {
         if (state != BattleState.PLAYERTURN)
             return;
 
-        StartCoroutine(PlayerHeal());
+        StartCoroutine(PlayerCatch());
     }
 
     public void OnFleeButton()

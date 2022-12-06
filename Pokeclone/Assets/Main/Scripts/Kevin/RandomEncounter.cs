@@ -16,6 +16,9 @@ public class RandomEncounter : MonoBehaviour
 
     public int battlescene;
 
+    [SerializeField] GameObject character;
+    [SerializeField] private master master = new master();
+
 
     public float DetectDistance = 1f;
     // Start is called before the first frame update
@@ -23,7 +26,7 @@ public class RandomEncounter : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         InvokeRepeating("RandomEncounterSystem", MinRandomRange, MaxRandomRange);
-
+        master = GameObject.Find("master").GetComponent<master>();
 
     }
 
@@ -42,6 +45,7 @@ public class RandomEncounter : MonoBehaviour
         {
             if (Random.Range(0, 10) < 5)
             {
+                GameObject.Find("character(Clone)");
                 Debug.Log("It's time to dual");
                 //start battle system
                 
