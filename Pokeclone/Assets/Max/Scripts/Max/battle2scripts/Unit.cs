@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    [SerializeField] public MoveBase[] spiritMoves = new MoveBase[4];
+
     public string unitName;
     public int unitLevel;
 

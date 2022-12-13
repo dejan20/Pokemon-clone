@@ -12,7 +12,7 @@ public class MoveBase : ScriptableObject
     [SerializeField] string desription;
 
     [SerializeField] SpiritType type;
-    [SerializeField] int power;
+    public int power;
     [SerializeField] int accuracy;
     [SerializeField] public int PP;
 }

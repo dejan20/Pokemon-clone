@@ -9,6 +9,8 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
 public class BattleSystem2 : MonoBehaviour
 {
+    GameObject button;
+    TextMeshProUGUI ButtonText;
 
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
@@ -17,14 +19,17 @@ public class BattleSystem2 : MonoBehaviour
 
     [SerializeField] private master master = new master();
     [SerializeField] GameObject character;
-    [SerializeField] PokemonParty pokemonParty = new PokemonParty();
+    [SerializeField] SpiritParty spiritParty = new SpiritParty();
 
     [SerializeField] GameObject spiritPrefabPlayer;
     [SerializeField] GameObject spiritPrefabEnemy;
-    [SerializeField] GameObject randomPokemon;
-    GameObject pokemonPartyUI;
+    [SerializeField] GameObject randomSpirit;
+    [SerializeField] private SpiritPartyUI spiritPartyUI;
+
+    GameObject partyUI;
 
     int randomSpiritInt;
+    int i;
 
 
     [SerializeField] public GameObject heal;
@@ -51,12 +56,13 @@ public class BattleSystem2 : MonoBehaviour
 
     void Awake()
     {
-        randomSpiritInt = Random.Range(1,3);
+        randomSpiritInt = Random.Range(0,3);
 
-        pokemonParty = GameObject.Find("character").GetComponent<PokemonParty>();
-        spiritPrefabPlayer = pokemonParty.spiritList[0];
+        spiritParty = GameObject.Find("character").GetComponent<SpiritParty>();
+        spiritPrefabPlayer = spiritParty.spiritList[0];
 
-        pokemonPartyUI = GameObject.Find("Pokemon Inventory");
+        partyUI = GameObject.Find("Spirit Inventory");
+        spiritPartyUI = GameObject.Find("Spirit Inventory").GetComponent<SpiritPartyUI>();
 
         master = GameObject.Find("master").GetComponent<master>();
         spiritPrefabEnemy = master.allSpiritList[randomSpiritInt];
@@ -72,24 +78,24 @@ public class BattleSystem2 : MonoBehaviour
 
     IEnumerator SetupBattle()
     {
-        pokemonPartyUI.SetActive(false);
+        partyUI.SetActive(false);
 
         character = GameObject.Find("character");
         
-        spiritPrefabPlayer = pokemonParty.spiritList[0].gameObject;
-        spiritPrefabPlayer = Instantiate(spiritPrefabPlayer);
+        spiritPrefabPlayer = spiritParty.spiritList[0].gameObject;
+        spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
 
         spiritPrefabEnemy = master.allSpiritList[randomSpiritInt].gameObject;
-        spiritPrefabEnemy = Instantiate(spiritPrefabEnemy);
+        spiritPrefabEnemy = Instantiate(spiritPrefabEnemy, new Vector3 (-311,4,90), Quaternion.identity);
 
         playerPrefab = spiritPrefabPlayer;
         enemyPrefab = spiritPrefabEnemy;
 
 
-        GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
+        GameObject playerGO = playerPrefab, playerBattleStation;
         playerUnit = playerGO.GetComponent<Unit>();
 
-        GameObject enemyGo = Instantiate(enemyPrefab, enemyBattleStation);
+        GameObject enemyGo = enemyPrefab, enemyBattleStation;
         enemyUnit = enemyGo.GetComponent<Unit>();
 
         Dialog.text = "A wild " + enemyUnit.unitName + " approaches.";
@@ -105,24 +111,26 @@ public class BattleSystem2 : MonoBehaviour
 
     IEnumerator PlayerAttack()
     {
+        Debug.Log("Attack 1");
+        return Attack(enemyUnit.TakeDamage(playerUnit.damage * playerUnit.spiritMoves[0].power));
+    }
 
-        bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+    IEnumerator PlayerAttack2()
+    {
+        Debug.Log("Attack 2");
+        return Attack(enemyUnit.TakeDamage(playerUnit.damage * playerUnit.spiritMoves[1].power));
+    }
 
-        enemyHUD.SetHP(enemyUnit.currentHP);
-        Dialog.text = playerUnit.unitName + " hit " + enemyUnit.unitName + " succesfully!";
+    IEnumerator PlayerAttack3()
+    {
+        Debug.Log("Attack 3");
+        return Attack(enemyUnit.TakeDamage(playerUnit.damage * playerUnit.spiritMoves[2].power));
+    }
 
-        yield return new WaitForSeconds(2f);
-
-        if (isDead)
-        {
-            state = BattleState.WON;
-            EndBattle();
-        }
-        else
-        {
-            state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemyTurn());
-        }
+    IEnumerator PlayerAttack4()
+    {
+        Debug.Log("Attack 4");
+        return Attack(enemyUnit.TakeDamage(playerUnit.damage * playerUnit.spiritMoves[3].power));
     }
 
     IEnumerator EnemyTurn()
@@ -155,7 +163,7 @@ public class BattleSystem2 : MonoBehaviour
         {
             Dialog.text = "You win!";
             new WaitForSeconds(5f);
-            pokemonPartyUI.SetActive(false);
+            partyUI.SetActive(false);
             SceneManager.LoadScene(4);
             Debug.Log("Back to MainScene");
         }
@@ -171,36 +179,79 @@ public class BattleSystem2 : MonoBehaviour
     }
 
     IEnumerator PlayerCatch()
-    {
-        //playerUnit.Heal(5);
-
-        
+    {     
         Dialog.text = enemyUnit.unitName + " has been catched!";
 
-        pokemonParty.spiritList.Add(master.allSpiritList[randomSpiritInt]);
+
+
+        spiritParty.spiritList.Add(master.allSpiritList[randomSpiritInt]);
+
+        spiritPartyUI.SpiritPartyImages(SpiritParty.i);
+        Debug.Log(SpiritParty.i);
+        spiritParty.IPlus();             
 
         yield return new WaitForSeconds(2f);
 
-        pokemonPartyUI.SetActive(true);
+        partyUI.SetActive(true);
         SceneManager.LoadScene(5);
     }
 
-    public void OnAttackButton()
+    public void OnMove1Button()
     {
         if (state != BattleState.PLAYERTURN)
             return;
 
         StartCoroutine(PlayerAttack());
 
-        heal.SetActive(false);
-        fight.SetActive(false);
-        flee.SetActive(false);
-        bag.SetActive(false);
-        dialogueText.SetActive(false);
+        MoveUI();
+    }
+    public void OnMove2Button()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
 
-        ActionSelector.SetActive(true);
-        dialogueText.SetActive(true);
-        Dialog.text = "Choose your move:";
+        StartCoroutine(PlayerAttack2());
+
+        MoveUI();
+    }
+    public void OnMove3Button()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+
+        StartCoroutine(PlayerAttack3());
+
+        MoveUI();
+    }
+    public void OnMove4Button()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+
+        StartCoroutine(PlayerAttack4());
+
+        MoveUI();
+    }
+
+    public void OnAttackButton()
+    {
+        MoveUI();
+
+        button = GameObject.Find("Move 1");
+        ButtonText = button.GetComponentInChildren<TextMeshProUGUI>();
+        ButtonText.text = playerUnit.spiritMoves[0].name;
+
+        button = GameObject.Find("Move 2");
+        ButtonText = button.GetComponentInChildren<TextMeshProUGUI>();
+        ButtonText.text = playerUnit.spiritMoves[1].name;
+
+        button = GameObject.Find("Move 3");
+        ButtonText = button.GetComponentInChildren<TextMeshProUGUI>();
+        ButtonText.text = playerUnit.spiritMoves[2].name;
+
+        button = GameObject.Find("Move 4");
+        ButtonText = button.GetComponentInChildren<TextMeshProUGUI>();
+        ButtonText.text = playerUnit.spiritMoves[3].name;
     }
 
     public void OnBackButton()
@@ -229,5 +280,37 @@ public class BattleSystem2 : MonoBehaviour
 
         SceneManager.LoadScene(4);
         Debug.Log("Back to MainScene");
+    }
+
+    public void MoveUI()
+    {
+        heal.SetActive(false);
+        fight.SetActive(false);
+        flee.SetActive(false);
+        bag.SetActive(false);
+        dialogueText.SetActive(false);
+
+        ActionSelector.SetActive(true);
+        dialogueText.SetActive(true);
+        Dialog.text = "Choose your move:";
+    }
+
+    public IEnumerator Attack(bool isDead)
+    {
+        enemyHUD.SetHP(enemyUnit.currentHP);
+        Dialog.text = playerUnit.unitName + " hit " + enemyUnit.unitName + " succesfully!";
+
+        yield return new WaitForSeconds(2f);
+
+        if (isDead)
+        {
+            state = BattleState.WON;
+            EndBattle();
+        }
+        else
+        {
+            state = BattleState.ENEMYTURN;
+            StartCoroutine(EnemyTurn());
+        }
     }
 }
