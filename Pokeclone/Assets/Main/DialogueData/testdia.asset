@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: testdia
   m_EditorClassIdentifier: 
   dialogue:
-  - 'Are you good today!
+  - 'Jesper: Are you good today!
 
 '
   responses:

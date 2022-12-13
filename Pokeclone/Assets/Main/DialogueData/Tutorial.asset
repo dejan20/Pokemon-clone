@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tutorial
   m_EditorClassIdentifier: 
   dialogue:
-  - Are you new here?
+  - 'Arjen: Are you new here?'
   responses:
   - responseText: Yes
     dialogueObject: {fileID: 11400000, guid: 398d706a3e6f9d24685ed6ec3a0284b8, type: 2}
