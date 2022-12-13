@@ -27,5 +27,10 @@ public class DialogueActivator : MonoBehaviour,  IInteractable
     public void Interact(character player)
     {
         player.DialogueUI.ShowDialogue(dialogueObject);
+        
+    }
+    public void itemInteract(character player)
+    {
+
     }
 }
