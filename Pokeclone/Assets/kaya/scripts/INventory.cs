@@ -8,21 +8,18 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 public class INventory : MonoBehaviour 
 {
     public int INVsize;
-    public GameObject item;
+    public GameObject item1;
     public GameObject itemPickup;
     public iteminteract itemInteract;
-
+    public itemgenerator itemgenerator;
     private float distance;
     private float minimumDistance = 2f;
-
+    public int currentsize; 
 
     public iteminteract Interactable { get; set; }
 
     [SerializeField] List<GameObject> ItemsList;
-    public void Inv()
-    {
-
-    }
+    
 
 
     // Start is called before the first frame update
@@ -35,26 +32,29 @@ public class INventory : MonoBehaviour
     }
     private void Awake()
     {
+        
     }
 
 
     void Update()
     {
-   
+        
 
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            ItemsList.Add((GameObject)(item));
+            ItemsList.Add((GameObject)(item1));
             AddItem();
         }
+        currentsize = ItemsList.Count;
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger");
 
+        Debug.Log("trigger");
+        //uwu
         if (other.CompareTag("Item"))
         {
             distance = Vector3.Distance(itemPickup.transform.position, transform.position);
@@ -63,8 +63,8 @@ public class INventory : MonoBehaviour
             if (distance <= minimumDistance)
             {
                 Debug.Log("Work?");
-                item = itemPickup;
-                ItemsList.Add(item);
+                item1 = itemPickup;
+                ItemsList.Add(item1);
                 AddItem();
             }
 
