@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpiritParty : MonoBehaviour
 {
-
-    //List<GameObject> spiritList;
     [SerializeField] public List<GameObject> spiritList  = new List<GameObject>(5);
     [SerializeField] private master master;
     [SerializeField] private SpiritPartyUI spiritPartyUI;
@@ -13,7 +11,6 @@ public class SpiritParty : MonoBehaviour
 
     void Awake()
     {
-        //spiritList = new List<GameObject>(5);
         Debug.Log("Test35");
         spiritPartyUI = GameObject.Find("Spirit Inventory").GetComponent<SpiritPartyUI>();
     }
