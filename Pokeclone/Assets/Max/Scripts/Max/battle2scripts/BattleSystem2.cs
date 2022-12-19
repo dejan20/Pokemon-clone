@@ -31,14 +31,14 @@ public class BattleSystem2 : MonoBehaviour
     int randomSpiritInt;
     int i;
 
-
-    [SerializeField] public GameObject heal;
+    [SerializeField] public GameObject spiritButton;
     [SerializeField] public GameObject fight;
     [SerializeField] public GameObject bag;
     [SerializeField] public GameObject flee;
     [SerializeField] public GameObject dialogueText;
 
     [SerializeField] public GameObject ActionSelector;
+    [SerializeField] public GameObject spiritSelector;
     [SerializeField] public GameObject Back;
 
     public Transform playerBattleStation;
@@ -59,7 +59,7 @@ public class BattleSystem2 : MonoBehaviour
         randomSpiritInt = Random.Range(0,3);
 
         spiritParty = GameObject.Find("character").GetComponent<SpiritParty>();
-        spiritPrefabPlayer = spiritParty.spiritList[0];
+        spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
 
         partyUI = GameObject.Find("Spirit Inventory");
         spiritPartyUI = GameObject.Find("Spirit Inventory").GetComponent<SpiritPartyUI>();
@@ -82,7 +82,7 @@ public class BattleSystem2 : MonoBehaviour
 
         character = GameObject.Find("character");
         
-        spiritPrefabPlayer = spiritParty.spiritList[0].gameObject;
+        spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
         spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
 
         spiritPrefabEnemy = master.allSpiritList[randomSpiritInt].gameObject;
@@ -90,7 +90,6 @@ public class BattleSystem2 : MonoBehaviour
 
         playerPrefab = spiritPrefabPlayer;
         enemyPrefab = spiritPrefabEnemy;
-
 
         GameObject playerGO = playerPrefab, playerBattleStation;
         playerUnit = playerGO.GetComponent<Unit>();
@@ -178,9 +177,9 @@ public class BattleSystem2 : MonoBehaviour
         Dialog.text = "what do you do? ";
     }
 
-    IEnumerator PlayerCatch()
+    IEnumerator PlayerspiritCatch()
     {     
-        Dialog.text = enemyUnit.unitName + " has been catched!";
+        Dialog.text = enemyUnit.unitName + " has been spiritCatched!";
 
 
 
@@ -256,21 +255,22 @@ public class BattleSystem2 : MonoBehaviour
 
     public void OnBackButton()
     {
-        heal.SetActive(true);
+        spiritButton.SetActive(true);
         fight.SetActive(true);
         flee.SetActive(true);
         bag.SetActive(true);
         ActionSelector.SetActive(false);
+        spiritSelector.SetActive(false);
 
         Dialog.text = "what do you do?";
     }
 
-    public void OnCatchButton()
+    public void OnspiritCatchButton()
     {
         if (state != BattleState.PLAYERTURN)
             return;
 
-        StartCoroutine(PlayerCatch());
+        StartCoroutine(PlayerspiritCatch());
     }
 
     public void OnFleeButton()
@@ -282,17 +282,36 @@ public class BattleSystem2 : MonoBehaviour
         Debug.Log("Back to MainScene");
     }
 
+    public void OnSwitchButton()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+    }
+
     public void MoveUI()
     {
-        heal.SetActive(false);
         fight.SetActive(false);
         flee.SetActive(false);
         bag.SetActive(false);
         dialogueText.SetActive(false);
+        spiritButton.SetActive(false);
 
         ActionSelector.SetActive(true);
         dialogueText.SetActive(true);
         Dialog.text = "Choose your move:";
+    }
+
+    public void SelectUI()
+    {
+        fight.SetActive(false);
+        flee.SetActive(false);
+        bag.SetActive(false);
+        dialogueText.SetActive(false);
+        spiritButton.SetActive(false);
+
+        spiritSelector.SetActive(true);
+        dialogueText.SetActive(true);
+        Dialog.text = "Choose your spirit:";
     }
 
     public IEnumerator Attack(bool isDead)

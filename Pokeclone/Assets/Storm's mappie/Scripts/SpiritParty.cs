@@ -8,6 +8,7 @@ public class SpiritParty : MonoBehaviour
     [SerializeField] private master master;
     [SerializeField] private SpiritPartyUI spiritPartyUI;
     public static int i;
+    public int selectedSpirit;
 
     void Awake()
     {
@@ -29,6 +30,11 @@ public class SpiritParty : MonoBehaviour
         {
             Debug.Log("Can't have more than 5 spirits!");
             spiritList.RemoveAt(5);
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log("Switching Spirit");
+            selectedSpirit++;
         }
     }
 
