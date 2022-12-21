@@ -1883,7 +1883,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 290523130}
         m_TargetAssemblyTypeName: BattleSystem2, Assembly-CSharp
-        m_MethodName: OnCatchButton
+        m_MethodName: OnSwitchButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

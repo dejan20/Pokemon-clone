@@ -92,9 +92,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spiritMoves:
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
+  - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
+  - {fileID: 11400000, guid: 7d4354f7a7f4cec44a36690c483f53e4, type: 2}
   unitName: Dundy
   unitLevel: 5
   damage: 10

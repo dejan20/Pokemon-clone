@@ -56,7 +56,7 @@ public class BattleSystem2 : MonoBehaviour
 
     void Awake()
     {
-        randomSpiritInt = Random.Range(0,3);
+        randomSpiritInt = Random.Range(0,8);
 
         spiritParty = GameObject.Find("character").GetComponent<SpiritParty>();
         spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
@@ -286,6 +286,19 @@ public class BattleSystem2 : MonoBehaviour
     {
         if (state != BattleState.PLAYERTURN)
             return;
+        
+        spiritParty.selectedSpirit++;
+        Destroy(playerPrefab);
+        spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
+        spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
+        spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+
+        playerPrefab = spiritPrefabPlayer;
+
+        GameObject playerGO = playerPrefab, playerBattleStation;
+        playerUnit = playerGO.GetComponent<Unit>();
+
+        playerHUD.SetHUD(playerUnit);
     }
 
     public void MoveUI()
