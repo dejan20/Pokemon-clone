@@ -14,7 +14,8 @@ public class INventory : MonoBehaviour
     public itemgenerator itemgenerator;
     private float distance;
     private float minimumDistance = 2f;
-    public int currentsize; 
+    public int currentsize;
+    
 
     public iteminteract Interactable { get; set; }
 
