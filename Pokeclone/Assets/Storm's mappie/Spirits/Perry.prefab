@@ -95,9 +95,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
   - {fileID: 11400000, guid: 569653e8057e55a4b83f2525691e03e3, type: 2}
+  spiritParty: {fileID: 0}
+  isDead: 0
   unitName: Perry
   unitLevel: 5
-  damage: 25
+  damage: 100
   maxHP: 100
   currentHP: 100
 --- !u!212 &6434340804748448963

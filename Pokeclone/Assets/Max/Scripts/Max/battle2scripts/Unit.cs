@@ -6,6 +6,10 @@ public class Unit : MonoBehaviour
 {
     [SerializeField] public MoveBase[] spiritMoves = new MoveBase[4];
 
+    [SerializeField] SpiritParty spiritParty = new SpiritParty();
+
+    public bool isDead;
+
     public string unitName;
     public int unitLevel;
 
@@ -13,6 +17,19 @@ public class Unit : MonoBehaviour
 
     public int maxHP;
     public int currentHP;
+
+    void Update()
+    {
+        if (currentHP <= 0)
+        {
+            isDead = true;
+        }
+
+        if (isDead == true)
+        {
+
+        }
+    }
 
     public bool TakeDamage(int dmg)
     {

@@ -54,6 +54,25 @@ public class BattleSystem2 : MonoBehaviour
 
     public BattleState state;
 
+    void Update()
+    {
+        if (playerUnit.isDead == true)
+        {
+            spiritParty.selectedSpirit++;
+            Destroy(playerPrefab);
+            spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
+            spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
+            spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+
+            playerPrefab = spiritPrefabPlayer;
+
+            GameObject playerGO = playerPrefab, playerBattleStation;
+            playerUnit = playerGO.GetComponent<Unit>();
+
+            playerHUD.SetHUD(playerUnit);
+        }
+    }
+
     void Awake()
     {
         randomSpiritInt = Random.Range(0,8);

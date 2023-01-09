@@ -95,9 +95,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
   - {fileID: 11400000, guid: 7d4354f7a7f4cec44a36690c483f53e4, type: 2}
+  spiritParty: {fileID: 0}
+  isDead: 0
   unitName: Dundy
   unitLevel: 5
-  damage: 10
+  damage: 100
   maxHP: 100
   currentHP: 100
 --- !u!212 &6316401258169632589
