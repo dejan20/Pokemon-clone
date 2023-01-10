@@ -99,7 +99,7 @@ MonoBehaviour:
   isDead: 0
   unitName: octopix
   unitLevel: 5
-  damage: 100
+  damage: 10
   maxHP: 100
   currentHP: 100
 --- !u!212 &5217618442010251427

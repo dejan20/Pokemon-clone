@@ -12,6 +12,8 @@ public class BattleSystem2 : MonoBehaviour
     GameObject button;
     TextMeshProUGUI ButtonText;
 
+    int j;
+
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
     GameObject enemy;
@@ -58,11 +60,31 @@ public class BattleSystem2 : MonoBehaviour
     {
         if (playerUnit.isDead == true)
         {
+            if (j >= 5)
+            {
+                Dialog.Text = "You Lost!";
+
+                yield return new WaitForSeconds(1f);
+            }
+
+            i++;
+
             spiritParty.selectedSpirit++;
             Destroy(playerPrefab);
-            spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
-            spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
-            spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+            try
+            {
+                spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
+                spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
+                spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+            }
+            catch (System.Exception)
+            {
+                spiritParty.selectedSpirit = -1;
+                for (int i = 0; i <= 6; i++)
+                {
+                    spiritParty.selectedSpirit++;
+                }
+            }
 
             playerPrefab = spiritPrefabPlayer;
 
@@ -163,16 +185,8 @@ public class BattleSystem2 : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        if (isDead)
-        {
-            state = BattleState.LOST;
-            EndBattle();
-        }
-        else
-        {
-            state = BattleState.PLAYERTURN;
-            PlayerTurn();
-        }
+        state = BattleState.PLAYERTURN;
+        PlayerTurn();
     }
 
     void EndBattle()
@@ -182,7 +196,7 @@ public class BattleSystem2 : MonoBehaviour
             Dialog.text = "You win!";
             new WaitForSeconds(5f);
             partyUI.SetActive(false);
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(5);
             Debug.Log("Back to MainScene");
         }
         else if (state == BattleState.LOST)
@@ -297,7 +311,7 @@ public class BattleSystem2 : MonoBehaviour
         if (state != BattleState.PLAYERTURN)
             return;
 
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(5);
         Debug.Log("Back to MainScene");
     }
 
@@ -356,7 +370,7 @@ public class BattleSystem2 : MonoBehaviour
         if (isDead)
         {
             state = BattleState.WON;
-            EndBattle();
+            StartCoroutine(EnemyTurn());
         }
         else
         {

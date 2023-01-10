@@ -26,6 +26,10 @@ public class SpiritParty : MonoBehaviour
     
     void Update()
     {
+        if (selectedSpirit >= 5)
+        {
+            selectedSpirit = 0;
+        }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
