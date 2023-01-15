@@ -536,8 +536,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b4e8f621c68394b97e4f897e957fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  j: 0
   playerPrefab: {fileID: 1867746483}
   enemyPrefab: {fileID: 0}
+  player: {fileID: 715879517}
   master: {fileID: 0}
   character: {fileID: 0}
   spiritParty: {fileID: 0}
@@ -869,7 +871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &405693468
 Transform:
   m_ObjectHideFlags: 0
@@ -1174,6 +1176,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &715879517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 715879518}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &715879518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715879517}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.393742, y: -12.996651, z: 6.099869}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &730785072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,8 +1746,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b4e8f621c68394b97e4f897e957fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  j: 0
   playerPrefab: {fileID: 1867746483}
   enemyPrefab: {fileID: 11897303}
+  player: {fileID: 0}
   master: {fileID: 0}
   character: {fileID: 0}
   spiritParty: {fileID: 0}
@@ -1766,7 +1801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1249824800
 Transform:
   m_ObjectHideFlags: 0
@@ -3991,6 +4026,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spiritParty: {fileID: 0}
+  isDead: 0
   unitName: Perry
   unitLevel: 1
   damage: 25
@@ -4149,6 +4186,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spiritParty: {fileID: 0}
+  isDead: 0
   unitName: Dundy
   unitLevel: 1
   damage: 10
@@ -4325,6 +4364,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spiritParty: {fileID: 0}
+  isDead: 0
   unitName: crocung
   unitLevel: 1
   damage: 15
@@ -6712,6 +6753,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spiritParty: {fileID: 0}
+  isDead: 0
   unitName: octopix
   unitLevel: 1
   damage: 13

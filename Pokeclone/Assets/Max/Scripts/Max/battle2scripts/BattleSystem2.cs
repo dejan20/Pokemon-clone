@@ -12,12 +12,12 @@ public class BattleSystem2 : MonoBehaviour
     GameObject button;
     TextMeshProUGUI ButtonText;
 
-    int j;
+    public int j;
 
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
     GameObject enemy;
-    GameObject player;
+    [SerializeField] GameObject player;
 
     [SerializeField] private master master = new master();
     [SerializeField] GameObject character;
@@ -60,22 +60,28 @@ public class BattleSystem2 : MonoBehaviour
     {
         if (playerUnit.isDead == true)
         {
-            if (j >= 5)
+            if (j >= spiritParty.spiritList.Count)
             {
-                Dialog.Text = "You Lost!";
+                Dialog.text = "You lost!";
 
-                yield return new WaitForSeconds(1f);
+                    partyUI.SetActive(true);
+                    SceneManager.LoadScene(5);
             }
 
-            i++;
+            j++;
+            
+            playerPrefab = master.transform.GetChild(0).gameObject;
+            spiritParty.spiritList[spiritParty.selectedSpirit] = playerPrefab;
 
             spiritParty.selectedSpirit++;
-            Destroy(playerPrefab);
+
+            playerPrefab.SetActive(false);
             try
             {
                 spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
                 spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
                 spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+                spiritPrefabPlayer.transform.SetParent(master.transform);
             }
             catch (System.Exception)
             {
@@ -123,8 +129,9 @@ public class BattleSystem2 : MonoBehaviour
 
         character = GameObject.Find("character");
         
+        playerPrefab.SetActive(false);
+        //playerUnit.isDead = false;
         spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
-        spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
 
         spiritPrefabEnemy = master.allSpiritList[randomSpiritInt].gameObject;
         spiritPrefabEnemy = Instantiate(spiritPrefabEnemy, new Vector3 (-311,4,90), Quaternion.identity);
@@ -212,7 +219,7 @@ public class BattleSystem2 : MonoBehaviour
 
     IEnumerator PlayerspiritCatch()
     {     
-        Dialog.text = enemyUnit.unitName + " has been spiritCatched!";
+        Dialog.text = enemyUnit.unitName + " has been Catched!";
 
 
 
@@ -320,7 +327,7 @@ public class BattleSystem2 : MonoBehaviour
         if (state != BattleState.PLAYERTURN)
             return;
         
-        spiritParty.selectedSpirit++;
+        /*spiritParty.selectedSpirit++;
         Destroy(playerPrefab);
         spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
         spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
@@ -331,7 +338,7 @@ public class BattleSystem2 : MonoBehaviour
         GameObject playerGO = playerPrefab, playerBattleStation;
         playerUnit = playerGO.GetComponent<Unit>();
 
-        playerHUD.SetHUD(playerUnit);
+        playerHUD.SetHUD(playerUnit);*/
     }
 
     public void MoveUI()
@@ -367,9 +374,9 @@ public class BattleSystem2 : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        if (isDead)
+        if (playerUnit.isDead)
         {
-            state = BattleState.WON;
+            state = BattleState.ENEMYTURN;
             StartCoroutine(EnemyTurn());
         }
         else

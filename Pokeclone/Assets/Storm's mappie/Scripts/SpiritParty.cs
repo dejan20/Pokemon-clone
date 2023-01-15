@@ -9,6 +9,9 @@ public class SpiritParty : MonoBehaviour
     [SerializeField] private master master;
     [SerializeField] private SpiritPartyUI spiritPartyUI;
 
+    [SerializeField] GameObject spiritPrefabPlayer;
+    
+
     [SerializeField] private GameObject spiritSelector1;
     [SerializeField] private GameObject spiritSelector2;
     [SerializeField] private GameObject spiritSelector3;
@@ -22,11 +25,13 @@ public class SpiritParty : MonoBehaviour
     {
         Debug.Log("Test35");
         spiritPartyUI = GameObject.Find("Spirit Inventory").GetComponent<SpiritPartyUI>();
+
+
     }
     
     void Update()
     {
-        if (selectedSpirit >= 5)
+        if (selectedSpirit >= 6)
         {
             selectedSpirit = 0;
         }
@@ -35,6 +40,9 @@ public class SpiritParty : MonoBehaviour
         {
             spiritList.Add(master.allSpiritList[1]);
             spiritPartyUI.SpiritPartyImages(i);
+            spiritPrefabPlayer = spiritList[selectedSpirit].gameObject;
+            spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+            spiritPrefabPlayer.transform.SetParent(master.transform);
             i++;
         }
 

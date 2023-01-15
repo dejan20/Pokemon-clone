@@ -6,8 +6,6 @@ public class Unit : MonoBehaviour
 {
     [SerializeField] public MoveBase[] spiritMoves = new MoveBase[4];
 
-    [SerializeField] SpiritParty spiritParty = new SpiritParty();
-
     public bool isDead;
 
     public string unitName;
@@ -16,7 +14,12 @@ public class Unit : MonoBehaviour
     public int damage;
 
     public int maxHP;
-    public int currentHP;
+    [SerializeField] public int currentHP;
+
+    void Start()
+    {
+        currentHP = maxHP;
+    }
 
     void Update()
     {
