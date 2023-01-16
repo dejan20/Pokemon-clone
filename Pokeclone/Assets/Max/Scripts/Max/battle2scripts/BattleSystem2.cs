@@ -70,7 +70,7 @@ public class BattleSystem2 : MonoBehaviour
 
             j++;
             
-            playerPrefab = master.transform.GetChild(0).gameObject;
+            playerPrefab = master.transform.GetChild(spiritParty.selectedSpirit).gameObject;
             spiritParty.spiritList[spiritParty.selectedSpirit] = playerPrefab;
 
             spiritParty.selectedSpirit++;
@@ -80,8 +80,8 @@ public class BattleSystem2 : MonoBehaviour
             {
                 spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
                 spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
-                spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
-                spiritPrefabPlayer.transform.SetParent(master.transform);
+                /*spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+                spiritPrefabPlayer.transform.SetParent(master.transform);*/
             }
             catch (System.Exception)
             {
@@ -130,7 +130,7 @@ public class BattleSystem2 : MonoBehaviour
         character = GameObject.Find("character");
         
         playerPrefab.SetActive(false);
-        //playerUnit.isDead = false;
+
         spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
 
         spiritPrefabEnemy = master.allSpiritList[randomSpiritInt].gameObject;
@@ -224,6 +224,9 @@ public class BattleSystem2 : MonoBehaviour
 
 
         spiritParty.spiritList.Add(master.allSpiritList[randomSpiritInt]);
+        spiritPrefabEnemy = Instantiate(spiritPrefabEnemy, new Vector3 (-320,1,90), Quaternion.identity);
+        spiritPrefabEnemy.transform.SetParent(master.transform);
+        playerPrefab.SetActive(false);
 
         spiritPartyUI.SpiritPartyImages(SpiritParty.i);
         Debug.Log(SpiritParty.i);

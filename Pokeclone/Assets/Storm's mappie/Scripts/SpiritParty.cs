@@ -9,7 +9,7 @@ public class SpiritParty : MonoBehaviour
     [SerializeField] private master master;
     [SerializeField] private SpiritPartyUI spiritPartyUI;
 
-    [SerializeField] GameObject spiritPrefabPlayer;
+    [SerializeField] public GameObject spiritPrefabPlayer;
     
 
     [SerializeField] private GameObject spiritSelector1;
@@ -42,7 +42,9 @@ public class SpiritParty : MonoBehaviour
             spiritPartyUI.SpiritPartyImages(i);
             spiritPrefabPlayer = spiritList[selectedSpirit].gameObject;
             spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+            //selectedSpirit++;
             spiritPrefabPlayer.transform.SetParent(master.transform);
+            spiritList[selectedSpirit] = spiritPrefabPlayer;
             i++;
         }
 
