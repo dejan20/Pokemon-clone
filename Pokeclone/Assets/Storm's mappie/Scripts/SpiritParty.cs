@@ -56,12 +56,24 @@ public class SpiritParty : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
+            spiritPrefabPlayer = spiritList[selectedSpirit].gameObject;
+            spiritPrefabPlayer.SetActive(false);
+
             selectedSpirit++;
+
+            spiritPrefabPlayer = spiritList[selectedSpirit].gameObject;
+            spiritPrefabPlayer.SetActive(true);
         }
 
         if (Input.GetKeyDown(KeyCode.H))
         {
+            spiritPrefabPlayer = spiritList[selectedSpirit].gameObject;
+            spiritPrefabPlayer.SetActive(false);
+            
             selectedSpirit--;
+
+            spiritPrefabPlayer = spiritList[selectedSpirit].gameObject;
+            spiritPrefabPlayer.SetActive(true);
         }
 
         if (selectedSpirit == 0)

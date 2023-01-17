@@ -65,7 +65,7 @@ public class BattleSystem2 : MonoBehaviour
                 Dialog.text = "You lost!";
 
                     partyUI.SetActive(true);
-                    master.transform.GetChild(spiritParty.selectedSpirit).gameObject.SetActive(false);
+                    //master.transform.GetChild(spiritParty.selectedSpirit).gameObject.SetActive(false);
                     SceneManager.LoadScene(5);
             }
 
@@ -107,6 +107,8 @@ public class BattleSystem2 : MonoBehaviour
         if(enemyUnit.isDead == true)
         {
             Dialog.text = "You Won!";
+
+            playerUnit.unitCurrentXP += 10;
 
             partyUI.SetActive(true);
             SceneManager.LoadScene(5);
@@ -235,9 +237,9 @@ public class BattleSystem2 : MonoBehaviour
 
         spiritParty.spiritList.Add(master.allSpiritList[randomSpiritInt]);
         spiritPartyUI.SpiritPartyImages(i);
-        spiritPrefabPlayer = spiritParty.spiritList[1].gameObject;
-        spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
         spiritParty.selectedSpirit++;
+        spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
+        spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
         spiritPrefabPlayer.transform.SetParent(master.transform);
         spiritParty.spiritList[spiritParty.selectedSpirit] = spiritPrefabPlayer;
 
@@ -335,7 +337,7 @@ public class BattleSystem2 : MonoBehaviour
     {
         if (state != BattleState.PLAYERTURN)
             return;
-
+        partyUI.SetActive(true);
         SceneManager.LoadScene(5);
         Debug.Log("Back to MainScene");
     }

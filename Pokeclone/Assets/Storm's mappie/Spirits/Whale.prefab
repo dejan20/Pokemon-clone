@@ -97,8 +97,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 569653e8057e55a4b83f2525691e03e3, type: 2}
   isDead: 0
   unitName: Whale
-  unitLevel: 5
-  damage: 100
+  unitLevel: 1
+  unitCurrentXP: 0
+  unitXpToNextlevel: 100
+  damage: 10
   maxHP: 100
   currentHP: 100
 --- !u!212 &9058353269095209719
