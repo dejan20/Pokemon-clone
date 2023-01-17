@@ -16,11 +16,6 @@ public class Unit : MonoBehaviour
     public int maxHP;
     [SerializeField] public int currentHP;
 
-    void Start()
-    {
-        currentHP = maxHP;
-    }
-
     void Update()
     {
         if (currentHP <= 0)

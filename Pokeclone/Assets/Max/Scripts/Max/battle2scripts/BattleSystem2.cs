@@ -65,6 +65,7 @@ public class BattleSystem2 : MonoBehaviour
                 Dialog.text = "You lost!";
 
                     partyUI.SetActive(true);
+                    master.transform.GetChild(spiritParty.selectedSpirit).gameObject.SetActive(false);
                     SceneManager.LoadScene(5);
             }
 
@@ -73,9 +74,12 @@ public class BattleSystem2 : MonoBehaviour
             playerPrefab = master.transform.GetChild(spiritParty.selectedSpirit).gameObject;
             spiritParty.spiritList[spiritParty.selectedSpirit] = playerPrefab;
 
+            playerPrefab.SetActive(false);
+
             spiritParty.selectedSpirit++;
 
-            playerPrefab.SetActive(false);
+            playerPrefab = master.transform.GetChild(spiritParty.selectedSpirit).gameObject;
+            playerPrefab.SetActive(true);
             try
             {
                 spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
@@ -98,6 +102,14 @@ public class BattleSystem2 : MonoBehaviour
             playerUnit = playerGO.GetComponent<Unit>();
 
             playerHUD.SetHUD(playerUnit);
+        }
+
+        if(enemyUnit.isDead == true)
+        {
+            Dialog.text = "You Won!";
+
+            partyUI.SetActive(true);
+            SceneManager.LoadScene(5);
         }
     }
 
@@ -128,8 +140,6 @@ public class BattleSystem2 : MonoBehaviour
         partyUI.SetActive(false);
 
         character = GameObject.Find("character");
-        
-        playerPrefab.SetActive(false);
 
         spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
 
@@ -138,6 +148,8 @@ public class BattleSystem2 : MonoBehaviour
 
         playerPrefab = spiritPrefabPlayer;
         enemyPrefab = spiritPrefabEnemy;
+
+        playerPrefab.SetActive(true);
 
         GameObject playerGO = playerPrefab, playerBattleStation;
         playerUnit = playerGO.GetComponent<Unit>();
@@ -221,11 +233,14 @@ public class BattleSystem2 : MonoBehaviour
     {     
         Dialog.text = enemyUnit.unitName + " has been Catched!";
 
-
-
         spiritParty.spiritList.Add(master.allSpiritList[randomSpiritInt]);
-        spiritPrefabEnemy = Instantiate(spiritPrefabEnemy, new Vector3 (-320,1,90), Quaternion.identity);
-        spiritPrefabEnemy.transform.SetParent(master.transform);
+        spiritPartyUI.SpiritPartyImages(i);
+        spiritPrefabPlayer = spiritParty.spiritList[1].gameObject;
+        spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+        spiritParty.selectedSpirit++;
+        spiritPrefabPlayer.transform.SetParent(master.transform);
+        spiritParty.spiritList[spiritParty.selectedSpirit] = spiritPrefabPlayer;
+
         playerPrefab.SetActive(false);
 
         spiritPartyUI.SpiritPartyImages(SpiritParty.i);
