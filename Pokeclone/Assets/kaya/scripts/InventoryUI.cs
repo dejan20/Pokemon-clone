@@ -9,8 +9,8 @@ public class InventoryUI : MonoBehaviour
     public Canvas CanvasObject;   
     // Reference to the UI text element where we will display the inventory
     public TMP_Text inventoryText;
-    public Image uiitemimg;
-    public Image uiitemimg2;
+    //public Image uiitemimg;
+    //public Image uiitemimg2;
 
     void Update()
     {
@@ -35,8 +35,8 @@ public class InventoryUI : MonoBehaviour
 
             text += " - " + inventory.item1.name + "\n";
             
-            uiitemimg.sprite = inventory.iimg.sprite;
-            uiitemimg2.sprite = inventory.iimg.sprite;
+            //uiitemimg.sprite = inventory.iimg.sprite;
+            //uiitemimg2.sprite = inventory.iimg.sprite;
             
 
         }
