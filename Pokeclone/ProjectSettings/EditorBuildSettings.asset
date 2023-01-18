@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Storm's mappie/Scenes/MainScene.unity
     guid: f96c4e7d17445be4c960b78641f5e7c1
+  - enabled: 1
+    path: Assets/Max/Scenes/YourHouse.unity
+    guid: ef6b4a9cec056854d9e433161b37bc31
+  - enabled: 1
+    path: Assets/Max/Scenes/MainScene.unity
+    guid: 691314ba5de208042bc3fe3d26ff4f44
   m_configObjects: {}
