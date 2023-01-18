@@ -64,7 +64,7 @@ public class INventory : MonoBehaviour
                 AddItem();
                 
                 
-
+                
                 iimg = itemPickup.GetComponent<Image>();
                 
             }

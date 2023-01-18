@@ -10,12 +10,8 @@ public class InventoryUI : MonoBehaviour
     // Reference to the UI text element where we will display the inventory
     public TMP_Text inventoryText;
     public Image uiitemimg;
-    public Image uiitemimgnew;
+    public Image uiitemimg2;
 
-    private void Start()
-    {
-        
-    }
     void Update()
     {
         
@@ -40,7 +36,7 @@ public class InventoryUI : MonoBehaviour
             text += " - " + inventory.item1.name + "\n";
             
             uiitemimg.sprite = inventory.iimg.sprite;
-            
+            uiitemimg2.sprite = inventory.iimg.sprite;
             
 
         }
