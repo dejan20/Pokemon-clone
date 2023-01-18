@@ -41,7 +41,7 @@ public class Unit : MonoBehaviour
 
         if (evolutionCheck = true)
         {
-            if (unitLevel => 10)
+            if (unitLevel >= 10)
             {
 
             }
