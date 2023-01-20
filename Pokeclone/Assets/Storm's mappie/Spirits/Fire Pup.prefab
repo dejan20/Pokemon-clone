@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &8247567855881084420
 RectTransform:
@@ -109,16 +109,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 96651c66f917c4148a6927d594231031, type: 2}
   - {fileID: 11400000, guid: 96651c66f917c4148a6927d594231031, type: 2}
   - {fileID: 11400000, guid: 96651c66f917c4148a6927d594231031, type: 2}
+  spiritPartyUI: {fileID: 0}
+  spiritParty: {fileID: 0}
   isDead: 0
   unitName: Fire Pup
+  spriteRenderer: {fileID: 7507594255631467511, guid: 92394eed97415eb478253b6609f0f9f6,
+    type: 3}
   unitLevel: 1
   unitCurrentXP: 0
   unitXpToNextlevel: 100
-  evolution: {fileID: 1166540389221589609, guid: 92394eed97415eb478253b6609f0f9f6,
-    type: 3}
-  damage: 10
-  maxHP: 100
-  currentHP: 100
+  evolutionCheck: 1
+  evolutionSprite: {fileID: 21300000, guid: 0c311a2a5db789645b19490fc8f17b45, type: 3}
+  attack: 52
+  maxHP: 20
+  currentHP: 20
 --- !u!222 &4915266981869315394
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -12,6 +12,11 @@ public class InventoryUI : MonoBehaviour
     //public Image uiitemimg;
     //public Image uiitemimg2;
 
+    void Start()
+    {
+        inventory = GameObject.Find("character").GetComponent<INventory>();
+    }
+
     void Update()
     {
         
@@ -34,11 +39,6 @@ public class InventoryUI : MonoBehaviour
             char[] whitespace = new char[] { ' ', '\t' };
 
             text += " - " + inventory.item1.name + "\n";
-            
-            //uiitemimg.sprite = inventory.iimg.sprite;
-            //uiitemimg2.sprite = inventory.iimg.sprite;
-            
-
         }
 
         // Update the text element with the inventory string

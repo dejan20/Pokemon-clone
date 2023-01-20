@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &7620314652911694341
 RectTransform:
@@ -147,11 +147,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
+  spiritPartyUI: {fileID: 0}
+  spiritParty: {fileID: 0}
   isDead: 0
   unitName: Fire Fox
+  spriteRenderer: {fileID: 0}
   unitLevel: 1
   unitCurrentXP: 0
   unitXpToNextlevel: 100
-  damage: 10
-  maxHP: 100
-  currentHP: 100
+  evolutionCheck: 0
+  evolutionSprite: {fileID: 0}
+  attack: 64
+  maxHP: 28
+  currentHP: 28

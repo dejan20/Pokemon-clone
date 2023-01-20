@@ -1,26 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Unit : MonoBehaviour
 {
     [SerializeField] public MoveBase[] spiritMoves = new MoveBase[4];
+    [SerializeField] public SpiritPartyUI spiritPartyUI;
+    [SerializeField] public SpiritParty spiritParty;
 
     public bool isDead;
 
     public string unitName;
 
+    public SpriteRenderer spriteRenderer;
+
     public int unitLevel;
     public int unitCurrentXP;
     public int unitXpToNextlevel = 100;
 
-    public GameObject evolution;
     public bool evolutionCheck;
+    public Sprite evolutionSprite;
 
-    public int damage;
+
+    public int attack;
 
     public int maxHP;
-    [SerializeField] public int currentHP;
+    public int currentHP;
+
+    void Awake()
+    {
+        spriteRenderer = this.GetComponent<SpriteRenderer>();
+        spiritParty = GameObject.Find("character").GetComponent<SpiritParty>();
+        spiritPartyUI = GameObject.Find("Spirit Inventory").GetComponent<SpiritPartyUI>();
+    }
 
     void Update()
     {
@@ -35,15 +48,17 @@ public class Unit : MonoBehaviour
             unitCurrentXP -= unitXpToNextlevel;
             unitXpToNextlevel = (int)(unitXpToNextlevel * 1.2f);
 
-            damage += 3;
-            maxHP += 10;
+            attack += Random.Range(3,5);
+            maxHP += Random.Range(3,5);
         }
 
         if (evolutionCheck = true)
         {
             if (unitLevel >= 10)
             {
-
+                spriteRenderer.sprite = evolutionSprite;
+                GetComponent<Image>().sprite = evolutionSprite;
+                spiritPartyUI.SpiritPartyImages(spiritParty.selectedSpirit);
             }
         }
     }

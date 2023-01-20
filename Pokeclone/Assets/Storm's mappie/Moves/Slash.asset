@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Slash
   desription: 
   type: 0
-  power: 1
+  power: 20
   accuracy: 0
   PP: 0
