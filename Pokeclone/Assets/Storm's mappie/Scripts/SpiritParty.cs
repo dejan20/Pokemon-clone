@@ -10,7 +10,8 @@ public class SpiritParty : MonoBehaviour
     [SerializeField] private SpiritPartyUI spiritPartyUI;
 
     [SerializeField] public GameObject spiritPrefabPlayer;
-    
+
+    public int firstSpirit;
 
     [SerializeField] private GameObject spiritSelector1;
     [SerializeField] private GameObject spiritSelector2;
@@ -38,7 +39,7 @@ public class SpiritParty : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            spiritList.Add(master.allSpiritList[1]);
+            spiritList.Add(master.allSpiritList[firstSpirit]);
             spiritPartyUI.SpiritPartyImages(i);
             spiritPrefabPlayer = spiritList[selectedSpirit].gameObject;
             spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
