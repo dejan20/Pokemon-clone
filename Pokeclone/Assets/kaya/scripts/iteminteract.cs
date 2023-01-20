@@ -6,7 +6,7 @@ using UnityEngine;
 public class iteminteract : MonoBehaviour
 {
     public GameObject interactitem;
-
+    
     public IInteractable Interactable { get; set; }
 
 
@@ -17,4 +17,7 @@ public class iteminteract : MonoBehaviour
         
     }
 
+
+    
+    
 }

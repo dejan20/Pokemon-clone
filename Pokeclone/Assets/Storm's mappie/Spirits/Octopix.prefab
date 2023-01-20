@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &3259229871851333650
 RectTransform:
@@ -95,9 +95,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
+  isDead: 0
   unitName: octopix
-  unitLevel: 5
-  damage: 10
+  unitLevel: 1
+  unitCurrentXP: 0
+  unitXpToNextlevel: 100
+  damage: 100
   maxHP: 100
   currentHP: 100
 --- !u!212 &5217618442010251427

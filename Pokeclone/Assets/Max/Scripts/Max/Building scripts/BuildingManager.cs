@@ -9,26 +9,54 @@ public class BuildingManager : MonoBehaviour
     private GameObject pendingObject;
 
     private Vector3 pos;
-    private RaycastHit hit;
 
+    private RaycastHit hit;
     [SerializeField] private LayerMask layerMask;
+
+    public float rotateAmount;
+
+    public float gridSize;
+    bool gridOn;
+
+    public bool canPlace = true;
+
+    [SerializeField] private Toggle gridToggle;
 
     void Update()
     {
-        if(pendingObject != null)
+        if (pendingObject != null)
         {
-            pendingObject.transform.position = pos;
+            if (gridOn)
+            {
+                pendingObject.transform.position = new Vector3(
+                    RoundToNearestGrid(pos.x),
+                    RoundToNearestGrid(pos.y),
+                    RoundToNearestGrid(pos.z)
+                    );
+            }
 
-            if (Input.GetMouseButtonDown(0))
+            else { pendingObject.transform.position = pos; }
+
+            if (Input.GetMouseButtonDown(0) && canPlace)
             {
                 PlaceObject();
             }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                RotateObject();
+            }
+
         }
     }
 
     public void PlaceObject()
     {
         pendingObject = null;
+    }
+
+    public void RotateObject()
+    {
+        pendingObject.transform.Rotate(Vector3.up, rotateAmount);
     }
 
     private void FixedUpdate()
@@ -44,5 +72,25 @@ public class BuildingManager : MonoBehaviour
     public void SelectObject(int index)
     {
         pendingObject = Instantiate(objects[index], pos, transform.rotation);
+    }
+
+    public void ToggleGrid()
+    {
+        if (gridToggle.isOn)
+        {
+            gridOn = true;
+        }
+        else { gridOn = false; }
+    }
+
+    float RoundToNearestGrid(float pos)
+    {
+        float xDiff = pos % gridSize;
+        pos -= xDiff;
+        if(xDiff > (gridSize  / 2))
+        {
+            pos += gridSize;
+        }
+        return pos;
     }
 }

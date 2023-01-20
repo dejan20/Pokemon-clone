@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
-
+using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
 
 public class INventory : MonoBehaviour 
 {
@@ -14,9 +12,10 @@ public class INventory : MonoBehaviour
     public itemgenerator itemgenerator;
     private float distance;
     private float minimumDistance = 2f;
-    public int currentsize; 
+    public int currentsize;
+    public Image iimg;
 
-    public iteminteract Interactable { get; set; }
+ 
 
     [SerializeField] List<GameObject> ItemsList;
     
@@ -30,10 +29,7 @@ public class INventory : MonoBehaviour
         itemPickup = GameObject.FindWithTag("Item");
 
     }
-    private void Awake()
-    {
-        
-    }
+ 
 
 
     void Update()
@@ -49,12 +45,12 @@ public class INventory : MonoBehaviour
         currentsize = ItemsList.Count;
 
     }
-
+    //pickup
     private void OnTriggerEnter(Collider other)
     {
 
         Debug.Log("trigger");
-        //uwu
+        
         if (other.CompareTag("Item"))
         {
             distance = Vector3.Distance(itemPickup.transform.position, transform.position);
@@ -66,6 +62,11 @@ public class INventory : MonoBehaviour
                 item1 = itemPickup;
                 ItemsList.Add(item1);
                 AddItem();
+                
+                
+                
+                iimg = itemPickup.GetComponent<Image>();
+                
             }
 
 
@@ -74,7 +75,6 @@ public class INventory : MonoBehaviour
 
     private void AddItem()
     {
-        
             if (ItemsList.Count > INVsize)
             {
                 Debug.Log("bigger than MAX SIZE");

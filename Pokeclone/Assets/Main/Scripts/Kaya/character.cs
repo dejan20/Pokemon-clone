@@ -49,7 +49,5 @@ public class character : MonoBehaviour
                 Interactable.Interact(this);
             }
         }
-
-
     }
 }

@@ -12,10 +12,12 @@ public class BattleSystem2 : MonoBehaviour
     GameObject button;
     TextMeshProUGUI ButtonText;
 
+    public int j;
+
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
     GameObject enemy;
-    GameObject player;
+    [SerializeField] GameObject player;
 
     [SerializeField] private master master = new master();
     [SerializeField] GameObject character;
@@ -31,14 +33,14 @@ public class BattleSystem2 : MonoBehaviour
     int randomSpiritInt;
     int i;
 
-
-    [SerializeField] public GameObject heal;
+    [SerializeField] public GameObject spiritButton;
     [SerializeField] public GameObject fight;
     [SerializeField] public GameObject bag;
     [SerializeField] public GameObject flee;
     [SerializeField] public GameObject dialogueText;
 
     [SerializeField] public GameObject ActionSelector;
+    [SerializeField] public GameObject spiritSelector;
     [SerializeField] public GameObject Back;
 
     public Transform playerBattleStation;
@@ -54,12 +56,71 @@ public class BattleSystem2 : MonoBehaviour
 
     public BattleState state;
 
+    void Update()
+    {
+        if (playerUnit.isDead == true)
+        {
+            if (j >= spiritParty.spiritList.Count)
+            {
+                Dialog.text = "You lost!";
+
+                    partyUI.SetActive(true);
+                    //master.transform.GetChild(spiritParty.selectedSpirit).gameObject.SetActive(false);
+                    SceneManager.LoadScene(5);
+            }
+
+            j++;
+            
+            playerPrefab = master.transform.GetChild(spiritParty.selectedSpirit).gameObject;
+            spiritParty.spiritList[spiritParty.selectedSpirit] = playerPrefab;
+
+            playerPrefab.SetActive(false);
+
+            spiritParty.selectedSpirit++;
+
+            playerPrefab = master.transform.GetChild(spiritParty.selectedSpirit).gameObject;
+            playerPrefab.SetActive(true);
+            try
+            {
+                spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
+                spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
+                /*spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+                spiritPrefabPlayer.transform.SetParent(master.transform);*/
+            }
+            catch (System.Exception)
+            {
+                spiritParty.selectedSpirit = -1;
+                for (int i = 0; i <= 6; i++)
+                {
+                    spiritParty.selectedSpirit++;
+                }
+            }
+
+            playerPrefab = spiritPrefabPlayer;
+
+            GameObject playerGO = playerPrefab, playerBattleStation;
+            playerUnit = playerGO.GetComponent<Unit>();
+
+            playerHUD.SetHUD(playerUnit);
+        }
+
+        if(enemyUnit.isDead == true)
+        {
+            Dialog.text = "You Won!";
+
+            playerUnit.unitCurrentXP += 10;
+
+            partyUI.SetActive(true);
+            SceneManager.LoadScene(5);
+        }
+    }
+
     void Awake()
     {
-        randomSpiritInt = Random.Range(0,3);
+        randomSpiritInt = Random.Range(0,8);
 
         spiritParty = GameObject.Find("character").GetComponent<SpiritParty>();
-        spiritPrefabPlayer = spiritParty.spiritList[0];
+        spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
 
         partyUI = GameObject.Find("Spirit Inventory");
         spiritPartyUI = GameObject.Find("Spirit Inventory").GetComponent<SpiritPartyUI>();
@@ -81,9 +142,8 @@ public class BattleSystem2 : MonoBehaviour
         partyUI.SetActive(false);
 
         character = GameObject.Find("character");
-        
-        spiritPrefabPlayer = spiritParty.spiritList[0].gameObject;
-        spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+
+        spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
 
         spiritPrefabEnemy = master.allSpiritList[randomSpiritInt].gameObject;
         spiritPrefabEnemy = Instantiate(spiritPrefabEnemy, new Vector3 (-311,4,90), Quaternion.identity);
@@ -91,6 +151,7 @@ public class BattleSystem2 : MonoBehaviour
         playerPrefab = spiritPrefabPlayer;
         enemyPrefab = spiritPrefabEnemy;
 
+        playerPrefab.SetActive(true);
 
         GameObject playerGO = playerPrefab, playerBattleStation;
         playerUnit = playerGO.GetComponent<Unit>();
@@ -145,16 +206,8 @@ public class BattleSystem2 : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        if (isDead)
-        {
-            state = BattleState.LOST;
-            EndBattle();
-        }
-        else
-        {
-            state = BattleState.PLAYERTURN;
-            PlayerTurn();
-        }
+        state = BattleState.PLAYERTURN;
+        PlayerTurn();
     }
 
     void EndBattle()
@@ -164,7 +217,7 @@ public class BattleSystem2 : MonoBehaviour
             Dialog.text = "You win!";
             new WaitForSeconds(5f);
             partyUI.SetActive(false);
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(5);
             Debug.Log("Back to MainScene");
         }
         else if (state == BattleState.LOST)
@@ -178,13 +231,19 @@ public class BattleSystem2 : MonoBehaviour
         Dialog.text = "what do you do? ";
     }
 
-    IEnumerator PlayerCatch()
+    IEnumerator PlayerspiritCatch()
     {     
-        Dialog.text = enemyUnit.unitName + " has been catched!";
-
-
+        Dialog.text = enemyUnit.unitName + " has been Catched!";
 
         spiritParty.spiritList.Add(master.allSpiritList[randomSpiritInt]);
+        spiritPartyUI.SpiritPartyImages(i);
+        spiritParty.selectedSpirit++;
+        spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
+        spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+        spiritPrefabPlayer.transform.SetParent(master.transform);
+        spiritParty.spiritList[spiritParty.selectedSpirit] = spiritPrefabPlayer;
+
+        playerPrefab.SetActive(false);
 
         spiritPartyUI.SpiritPartyImages(SpiritParty.i);
         Debug.Log(SpiritParty.i);
@@ -256,43 +315,76 @@ public class BattleSystem2 : MonoBehaviour
 
     public void OnBackButton()
     {
-        heal.SetActive(true);
+        spiritButton.SetActive(true);
         fight.SetActive(true);
         flee.SetActive(true);
         bag.SetActive(true);
         ActionSelector.SetActive(false);
+        spiritSelector.SetActive(false);
 
         Dialog.text = "what do you do?";
     }
 
-    public void OnCatchButton()
+    public void OnspiritCatchButton()
     {
         if (state != BattleState.PLAYERTURN)
             return;
 
-        StartCoroutine(PlayerCatch());
+        StartCoroutine(PlayerspiritCatch());
     }
 
     public void OnFleeButton()
     {
         if (state != BattleState.PLAYERTURN)
             return;
-
-        SceneManager.LoadScene(4);
+        partyUI.SetActive(true);
+        SceneManager.LoadScene(5);
         Debug.Log("Back to MainScene");
+    }
+
+    public void OnSwitchButton()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+        
+        /*spiritParty.selectedSpirit++;
+        Destroy(playerPrefab);
+        spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
+        spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
+        spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
+
+        playerPrefab = spiritPrefabPlayer;
+
+        GameObject playerGO = playerPrefab, playerBattleStation;
+        playerUnit = playerGO.GetComponent<Unit>();
+
+        playerHUD.SetHUD(playerUnit);*/
     }
 
     public void MoveUI()
     {
-        heal.SetActive(false);
         fight.SetActive(false);
         flee.SetActive(false);
         bag.SetActive(false);
         dialogueText.SetActive(false);
+        spiritButton.SetActive(false);
 
         ActionSelector.SetActive(true);
         dialogueText.SetActive(true);
         Dialog.text = "Choose your move:";
+    }
+
+    public void SelectUI()
+    {
+        fight.SetActive(false);
+        flee.SetActive(false);
+        bag.SetActive(false);
+        dialogueText.SetActive(false);
+        spiritButton.SetActive(false);
+
+        spiritSelector.SetActive(true);
+        dialogueText.SetActive(true);
+        Dialog.text = "Choose your spirit:";
     }
 
     public IEnumerator Attack(bool isDead)
@@ -302,10 +394,10 @@ public class BattleSystem2 : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        if (isDead)
+        if (playerUnit.isDead)
         {
-            state = BattleState.WON;
-            EndBattle();
+            state = BattleState.ENEMYTURN;
+            StartCoroutine(EnemyTurn());
         }
         else
         {
