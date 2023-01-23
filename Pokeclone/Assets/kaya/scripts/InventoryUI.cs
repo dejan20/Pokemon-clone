@@ -30,8 +30,10 @@ public class InventoryUI : MonoBehaviour
             CanvasObject.GetComponent<Canvas>().enabled = true;
             Time.timeScale = 0;
         }
-       
+    }
 
+    public void Pickup()
+    {
         // Build the string that will be displayed in the UI
         string text = "Inventory:\n";
         for (int i = 0; i < inventory.currentsize; i++)

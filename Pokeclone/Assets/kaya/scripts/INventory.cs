@@ -15,6 +15,8 @@ public class INventory : MonoBehaviour
     public int currentsize;
     public Image iimg;
 
+    InventoryUI inventoryUI = new InventoryUI();
+
  
 
     [SerializeField] List<GameObject> ItemsList;
@@ -26,7 +28,7 @@ public class INventory : MonoBehaviour
     {
         ItemsList = new List<GameObject>();
 
-        itemPickup = GameObject.FindWithTag("Item");
+        
 
     }
  
@@ -34,6 +36,7 @@ public class INventory : MonoBehaviour
 
     void Update()
     {
+        itemPickup = GameObject.FindWithTag("Item");
         /*if (Input.GetKeyDown(KeyCode.I))
         {
             ItemsList.Add((GameObject)(item1));
@@ -62,6 +65,7 @@ public class INventory : MonoBehaviour
                 
                 
                 
+                
                 iimg = itemPickup.GetComponent<Image>();
                 
             }
@@ -77,5 +81,6 @@ public class INventory : MonoBehaviour
                 Debug.Log("bigger than MAX SIZE");
                 ItemsList.RemoveAt(INVsize);
             }
+            inventoryUI.Pickup();
     }
 }

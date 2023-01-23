@@ -107,7 +107,7 @@ MonoBehaviour:
   spiritMoves:
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
-  - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
+  - {fileID: 11400000, guid: 7d4354f7a7f4cec44a36690c483f53e4, type: 2}
   - {fileID: 11400000, guid: 57e5cd3bcb3501f48b64295df993b8f3, type: 2}
   spiritPartyUI: {fileID: 0}
   spiritParty: {fileID: 0}
@@ -119,7 +119,7 @@ MonoBehaviour:
   unitXpToNextlevel: 100
   evolutionCheck: 1
   evolutionSprite: {fileID: 21300000, guid: ac26c1b3ce86a7f43a08447f548f2c53, type: 3}
-  attack: 0
+  attack: 48
   maxHP: 100
   currentHP: 100
 --- !u!222 &5831309454393380355

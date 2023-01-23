@@ -284,7 +284,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -7.3525085, y: 0, z: -14.093071, w: 0}
+  m_margin: {x: -60.600666, y: 0, z: -23.528324, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -7.2267456, y: 0, z: -8.130089, w: 0}
+  m_margin: {x: -60.81078, y: 0, z: -41.83291, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2423,7 +2423,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -6.3234024, y: 0, z: -14.453487, w: 0}
+  m_margin: {x: -40.196465, y: 0, z: -51.66692, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2728,7 +2728,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -7.3525085, y: 0, z: -15.316956, w: 0}
+  m_margin: {x: -40.164253, y: 0, z: -51.94759, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4513,14 +4513,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spiritPartyUI: {fileID: 0}
+  spiritParty: {fileID: 0}
   isDead: 0
   unitName: Perry
+  spriteRenderer: {fileID: 0}
   unitLevel: 1
   unitCurrentXP: 0
   unitXpToNextlevel: 100
-  evolution: {fileID: 0}
   evolutionCheck: 0
-  damage: 25
+  evolutionSprite: {fileID: 0}
+  attack: 0
   maxHP: 100
   currentHP: 100
 --- !u!114 &3259229870491323707
@@ -4676,14 +4679,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spiritPartyUI: {fileID: 0}
+  spiritParty: {fileID: 0}
   isDead: 0
   unitName: Dundy
+  spriteRenderer: {fileID: 0}
   unitLevel: 1
   unitCurrentXP: 0
   unitXpToNextlevel: 100
-  evolution: {fileID: 0}
   evolutionCheck: 0
-  damage: 10
+  evolutionSprite: {fileID: 0}
+  attack: 0
   maxHP: 100
   currentHP: 100
 --- !u!224 &3304797116871587198
@@ -4857,14 +4863,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spiritPartyUI: {fileID: 0}
+  spiritParty: {fileID: 0}
   isDead: 0
   unitName: crocung
+  spriteRenderer: {fileID: 0}
   unitLevel: 1
   unitCurrentXP: 0
   unitXpToNextlevel: 100
-  evolution: {fileID: 0}
   evolutionCheck: 0
-  damage: 15
+  evolutionSprite: {fileID: 0}
+  attack: 0
   maxHP: 37
   currentHP: 37
 --- !u!1 &4083898564477136486
@@ -7249,13 +7258,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spiritPartyUI: {fileID: 0}
+  spiritParty: {fileID: 0}
   isDead: 0
   unitName: octopix
+  spriteRenderer: {fileID: 0}
   unitLevel: 1
   unitCurrentXP: 0
   unitXpToNextlevel: 100
-  evolution: {fileID: 0}
   evolutionCheck: 0
-  damage: 13
+  evolutionSprite: {fileID: 0}
+  attack: 0
   maxHP: 40
   currentHP: 40

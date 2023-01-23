@@ -482,7 +482,6 @@ MonoBehaviour:
   MaiMenu: {fileID: 20519642}
   PauseMenu: {fileID: 1219540467}
   SettingsMenu: {fileID: 470906795}
-  resolutionDropdown: {fileID: 0}
 --- !u!114 &231353004
 MonoBehaviour:
   m_ObjectHideFlags: 0
