@@ -14,6 +14,8 @@ public class BattleSystem2 : MonoBehaviour
 
     public int j;
 
+    int earnedXP;
+
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
     GameObject enemy;
@@ -27,6 +29,8 @@ public class BattleSystem2 : MonoBehaviour
     [SerializeField] GameObject spiritPrefabEnemy;
     [SerializeField] GameObject randomSpirit;
     [SerializeField] private SpiritPartyUI spiritPartyUI;
+
+    public Canvas CanvasObject;  
 
     GameObject partyUI;
 
@@ -64,7 +68,7 @@ public class BattleSystem2 : MonoBehaviour
             {
                 Dialog.text = "You lost!";
 
-                    partyUI.SetActive(true);
+                    partyUI.GetComponent<Canvas>().enabled = true;
                     //master.transform.GetChild(spiritParty.selectedSpirit).gameObject.SetActive(false);
                     SceneManager.LoadScene(5);
             }
@@ -84,8 +88,6 @@ public class BattleSystem2 : MonoBehaviour
             {
                 spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];
                 spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit].gameObject;
-                /*spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
-                spiritPrefabPlayer.transform.SetParent(master.transform);*/
             }
             catch (System.Exception)
             {
@@ -106,11 +108,12 @@ public class BattleSystem2 : MonoBehaviour
 
         if(enemyUnit.isDead == true)
         {
-            Dialog.text = "You Won!";
+            earnedXP = Random.Range(5,10);
+            playerUnit.unitCurrentXP += earnedXP;
 
-            playerUnit.unitCurrentXP += 10;
+            Won();
 
-            partyUI.SetActive(true);
+            partyUI.GetComponent<Canvas>().enabled = false;
             SceneManager.LoadScene(5);
         }
     }
@@ -139,7 +142,6 @@ public class BattleSystem2 : MonoBehaviour
 
     IEnumerator SetupBattle()
     {
-        partyUI.SetActive(false);
 
         character = GameObject.Find("character");
 
@@ -161,6 +163,8 @@ public class BattleSystem2 : MonoBehaviour
 
         Dialog.text = "A wild " + enemyUnit.unitName + " approaches.";
 
+        partyUI.GetComponent<Canvas>().enabled = false;
+
         playerHUD.SetHUD(playerUnit);
         enemyHUD.SetHUD(enemyUnit);
 
@@ -170,28 +174,43 @@ public class BattleSystem2 : MonoBehaviour
         PlayerTurn();
     }
 
+    int firstCalc;
+    int secondCalc;
+
     IEnumerator PlayerAttack()
     {
-        Debug.Log("Attack 1");
-        return Attack(enemyUnit.TakeDamage(playerUnit.damage * playerUnit.spiritMoves[0].power));
+        firstCalc = 2 * playerUnit.attack * playerUnit.spiritMoves[0].power;
+        secondCalc = firstCalc / 50 + 2;
+
+        Debug.Log(secondCalc / 8);
+        return Attack(enemyUnit.TakeDamage(secondCalc / 8));
     }
 
     IEnumerator PlayerAttack2()
     {
-        Debug.Log("Attack 2");
-        return Attack(enemyUnit.TakeDamage(playerUnit.damage * playerUnit.spiritMoves[1].power));
+        firstCalc = 2 * playerUnit.attack * playerUnit.spiritMoves[0].power;
+        secondCalc = firstCalc / 50 + 2;
+
+        Debug.Log(secondCalc / 8);
+        return Attack(enemyUnit.TakeDamage(secondCalc / 8));
     }
 
     IEnumerator PlayerAttack3()
     {
-        Debug.Log("Attack 3");
-        return Attack(enemyUnit.TakeDamage(playerUnit.damage * playerUnit.spiritMoves[2].power));
+        firstCalc = 2 * playerUnit.attack * playerUnit.spiritMoves[0].power;
+        secondCalc = firstCalc / 50 + 2;
+
+        Debug.Log(secondCalc / 8);
+        return Attack(enemyUnit.TakeDamage(secondCalc / 8));
     }
 
     IEnumerator PlayerAttack4()
     {
-        Debug.Log("Attack 4");
-        return Attack(enemyUnit.TakeDamage(playerUnit.damage * playerUnit.spiritMoves[3].power));
+        firstCalc = 2 * playerUnit.attack * playerUnit.spiritMoves[0].power;
+        secondCalc = firstCalc / 50 + 2;
+
+        Debug.Log(secondCalc / 8);
+        return Attack(enemyUnit.TakeDamage(secondCalc / 8));
     }
 
     IEnumerator EnemyTurn()
@@ -200,7 +219,12 @@ public class BattleSystem2 : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+        firstCalc = 2 * enemyUnit.attack * enemyUnit.spiritMoves[0].power;
+        secondCalc = firstCalc / 50 + 2;
+
+        Debug.Log(secondCalc / 8);
+
+        bool isDead = playerUnit.TakeDamage(secondCalc / 8);
 
         playerHUD.SetHP(playerUnit.currentHP);
 
@@ -216,7 +240,7 @@ public class BattleSystem2 : MonoBehaviour
         {
             Dialog.text = "You win!";
             new WaitForSeconds(5f);
-            partyUI.SetActive(false);
+            partyUI.GetComponent<Canvas>().enabled = false;
             SceneManager.LoadScene(5);
             Debug.Log("Back to MainScene");
         }
@@ -251,7 +275,7 @@ public class BattleSystem2 : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        partyUI.SetActive(true);
+        partyUI.GetComponent<Canvas>().enabled = true;
         SceneManager.LoadScene(5);
     }
 
@@ -337,7 +361,7 @@ public class BattleSystem2 : MonoBehaviour
     {
         if (state != BattleState.PLAYERTURN)
             return;
-        partyUI.SetActive(true);
+        partyUI.GetComponent<Canvas>().enabled = true;
         SceneManager.LoadScene(5);
         Debug.Log("Back to MainScene");
     }
@@ -359,6 +383,14 @@ public class BattleSystem2 : MonoBehaviour
         playerUnit = playerGO.GetComponent<Unit>();
 
         playerHUD.SetHUD(playerUnit);*/
+    }
+
+        public void OnBagButton()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+        CanvasObject.GetComponent<Canvas>().enabled = true;
+        
     }
 
     public void MoveUI()
@@ -404,5 +436,21 @@ public class BattleSystem2 : MonoBehaviour
             state = BattleState.ENEMYTURN;
             StartCoroutine(EnemyTurn());
         }
+    }
+
+    IEnumerator Won()
+    {
+        Dialog.text = "You Won!";
+        yield return new WaitForSeconds(1f);
+        Dialog.text = "You Gained " + earnedXP;
+        yield return new WaitForSeconds(1f);
+    }
+
+    void Damage()
+    {
+        firstCalc = 2 * playerUnit.attack * playerUnit.spiritMoves[0].power;
+        secondCalc = firstCalc / 50 + 2;
+
+        Debug.Log(secondCalc / 8);
     }
 }

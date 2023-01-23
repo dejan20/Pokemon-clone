@@ -34,14 +34,11 @@ public class INventory : MonoBehaviour
 
     void Update()
     {
-        
-
-
-        if (Input.GetKeyDown(KeyCode.I))
+        /*if (Input.GetKeyDown(KeyCode.I))
         {
             ItemsList.Add((GameObject)(item1));
             AddItem();
-        }
+        }*/
         currentsize = ItemsList.Count;
 
     }
