@@ -882,6 +882,7 @@ GameObject:
   - component: {fileID: 1194994609}
   - component: {fileID: 1194994611}
   - component: {fileID: 1194994610}
+  - component: {fileID: 1194994612}
   m_Layer: 5
   m_Name: fgo
   m_TagString: Untagged
@@ -899,14 +900,14 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 132639985}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.5}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1194994610
@@ -947,6 +948,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194994608}
   m_CullTransparentMesh: 1
+--- !u!111 &1194994612
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194994608}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 552a83acb06aa634a883fe61fc6d1527, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 552a83acb06aa634a883fe61fc6d1527, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1340335179 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6450171293205034070, guid: bc07d355d98878f43935545c65511974,
@@ -1607,6 +1624,11 @@ PrefabInstance:
     - target: {fileID: 6566607904953691576, guid: bc07d355d98878f43935545c65511974,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566607906303851920, guid: bc07d355d98878f43935545c65511974,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8600078588082303467, guid: bc07d355d98878f43935545c65511974,
