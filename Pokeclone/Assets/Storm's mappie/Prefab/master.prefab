@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 10.592247, y: 2.5666358, z: -5.98726}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8092709165386540744}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -70,6 +71,8 @@ MonoBehaviour:
   MaxRandomRange: 10
   MinRandomRange: 0
   battlescene: 3
+  character: {fileID: 0}
+  master: {fileID: 0}
   DetectDistance: 10
 --- !u!114 &1422228730286822210
 MonoBehaviour:
@@ -83,3 +86,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3fe8cd922f3244daa35d2faa448791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7515051078977956357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8092709165386540744}
+  - component: {fileID: 6882804308276088442}
+  m_Layer: 0
+  m_Name: BuildingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8092709165386540744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7515051078977956357}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.675273, y: 0.036160707, z: 1.2922974}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1422228730286822208}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6882804308276088442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7515051078977956357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ab6858e75afa5459bee3659657647e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 4546495322481943729, guid: 3bcdc4f74ed87fa46bf147a6e7a9f0b3, type: 3}
+  - {fileID: 6312296520961577295, guid: 38627750a4acb0640a0f5eb774d44070, type: 3}
+  - {fileID: 616960407298147447, guid: 1157ce422897a074694b3a43d8589ef1, type: 3}
+  - {fileID: 5647983611766716369, guid: 96370f23b6db3f24fb92590603c7be1b, type: 3}
+  - {fileID: 3538233176918785290, guid: f9c501b3c42500548934b77a9182fbab, type: 3}
+  - {fileID: 6883860161417128768, guid: 574fdf2168f64234bbd03d7f9dfb56c3, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  rotateAmount: 90
+  gridSize: 1
+  canPlace: 1
+  gridToggle: {fileID: 0}
