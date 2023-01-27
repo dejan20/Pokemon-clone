@@ -50,7 +50,7 @@ public class BattleSystem2 : MonoBehaviour
     public Transform playerBattleStation;
     public Transform enemyBattleStation;
 
-    Unit playerUnit;
+    public Unit playerUnit;
     Unit enemyUnit;
 
     public TMP_Text Dialog;

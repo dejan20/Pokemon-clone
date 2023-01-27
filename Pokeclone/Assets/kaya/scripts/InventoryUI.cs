@@ -35,15 +35,15 @@ public class InventoryUI : MonoBehaviour
     public void Pickup()
     {
         // Build the string that will be displayed in the UI
-        string text = "Inventory:\n";
-        for (int i = 0; i < inventory.currentsize; i++)
-        {
-            char[] whitespace = new char[] { ' ', '\t' };
+        //string text = "Inventory:\n";
+        //for (int i = 0; i < inventory.currentsize; i++)
+        //{
+        //    char[] whitespace = new char[] { ' ', '\t' };
 
-            text += " - " + inventory.item1.name + "\n";
-        }
+        //    text += " - " + inventory.item1.name + "\n";
+        //}
 
         // Update the text element with the inventory string
-        inventoryText.text = text;
+        //inventoryText.text = text;
     }
 }
