@@ -24,7 +24,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: water
-  m_Shader: {fileID: -6465566751694194690, guid: 3fb845298afbd99418b04d37c556b4e9,
+  m_Shader: {fileID: -6465566751694194690, guid: 9dffb244590308b41b5a77fbc8eed3c5,
     type: 3}
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
