@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class startechoise : MonoBehaviour
 {
 
-
+    
     public int tptoscene = 0;
     public SpiritParty spiritParty;
     // Start is called before the first frame update

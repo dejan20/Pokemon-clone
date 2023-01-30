@@ -19,7 +19,7 @@ public class INventory : MonoBehaviour
 
  
 
-    [SerializeField] List<GameObject> ItemsList;
+    [SerializeField]public List<GameObject> ItemsList;
     
 
 
