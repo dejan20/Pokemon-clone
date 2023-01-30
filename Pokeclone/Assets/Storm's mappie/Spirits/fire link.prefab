@@ -120,8 +120,8 @@ MonoBehaviour:
   evolutionCheck: 1
   evolutionSprite: {fileID: 21300000, guid: ac26c1b3ce86a7f43a08447f548f2c53, type: 3}
   attack: 48
-  maxHP: 100
-  currentHP: 100
+  maxHP: 50
+  currentHP: 50
 --- !u!222 &5831309454393380355
 CanvasRenderer:
   m_ObjectHideFlags: 0
