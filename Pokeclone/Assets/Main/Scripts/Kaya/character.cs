@@ -25,13 +25,14 @@ public class character : MonoBehaviour
     {
         Cursor.visible = false;
         characterController = GetComponent<CharacterController>();
-
+        Physics.gravity = new Vector3(0, -1.0F, 0);
 
     }
 
     
     void Update()
     {
+        
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         characterController.Move(move.normalized * Time.deltaTime*Speed);
