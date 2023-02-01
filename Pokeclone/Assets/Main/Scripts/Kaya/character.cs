@@ -10,34 +10,40 @@ public class character : MonoBehaviour
 
     private Rigidbody rigidbody;
 
-    public float Speed = 0.1f;
+    public float Speed = 2f;
 
-    public float run = 10f;
+    public float run = 5f;
 
     public bool hasshoes = false;
     public DialogueUI DialogueUI => dialogueUI;
 
     public IInteractable Interactable { get; set; }
 
-
-
     void Start()
     {
         Cursor.visible = false;
         rigidbody = GetComponent<Rigidbody>();
+        rigidbody.useGravity = true;
     }
-
 
     void Update()
     {
-
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        rigidbody.AddForce(move.normalized * Speed, ForceMode.VelocityChange);
-
-        if (Input.GetKey(KeyCode.LeftShift) && hasshoes)
+        if (move == Vector3.zero)
         {
-            rigidbody.AddForce(move.normalized * run, ForceMode.VelocityChange);
+            rigidbody.velocity = Vector3.zero;
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.LeftShift) && hasshoes)
+            {
+                rigidbody.AddForce(move.normalized * run, ForceMode.Force);
+            }
+            else
+            {
+                rigidbody.AddForce(move.normalized * Speed, ForceMode.Force);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E))

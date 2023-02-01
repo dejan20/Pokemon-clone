@@ -10,7 +10,7 @@ public class TeleportPlayer : MonoBehaviour
     void Start()
     {
         character = GameObject.Find("character");
-        character.transform.position = new Vector3(3.8f, 1.8f, -3.7f);
+        character.transform.position = new Vector3(4.55999994f, 3.75999999f, -8.59000015f);
     }
 
     // Update is called once per frame
