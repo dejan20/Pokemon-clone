@@ -649,7 +649,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 3a1111dd542ebe94897ad5a12ce9d6a9, type: 3}
 --- !u!4 &63027729 stripped
@@ -677,7 +677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &107943131
 Transform:
   m_ObjectHideFlags: 0
@@ -1885,7 +1885,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250689104}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -2000,7 +2000,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282828918}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -2104,7 +2104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartPosition: {x: 0, y: 0, z: 0}
-  EndPosition1: {x: 0, y: 1.8, z: 0}
+  EndPosition1: {x: 0, y: 5.86, z: 0}
   CurrentPosition: {x: 0, y: 0, z: 0}
   platform1: {fileID: 165115918}
 --- !u!136 &328257228
@@ -4476,7 +4476,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804153811}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -4746,7 +4746,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 3a1111dd542ebe94897ad5a12ce9d6a9, type: 3}
 --- !u!1 &833881105
@@ -4899,7 +4899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1421e61033c5d90418ba4b0e38e7996c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPosition: {x: 0, y: 0.85, z: 0}
+  StartPosition: {x: 0, y: 2.5, z: 0}
   EndPosition1: {x: 0, y: 0, z: 0}
   CurrentPosition: {x: 0, y: 0, z: 0}
   platform1: {fileID: 165115918}
@@ -5093,7 +5093,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904621971}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -5685,7 +5685,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034256351}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -5788,7 +5788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartPosition: {x: 0, y: 0, z: 0}
-  EndPosition1: {x: 0, y: 0.85, z: 0}
+  EndPosition1: {x: 0, y: 2.5, z: 0}
   CurrentPosition: {x: 0, y: 0, z: 0}
   platform1: {fileID: 165115918}
 --- !u!136 &1053794154
@@ -7024,7 +7024,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354168538}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -7180,7 +7180,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 3a1111dd542ebe94897ad5a12ce9d6a9, type: 3}
 --- !u!1 &1432198724
@@ -7383,7 +7383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartPosition: {x: 0, y: 0, z: 0}
-  EndPosition1: {x: 0, y: 2.4, z: 0}
+  EndPosition1: {x: 0, y: 7.6, z: 0}
   CurrentPosition: {x: 0, y: 0, z: 0}
   platform1: {fileID: 165115918}
 --- !u!136 &1454233140
@@ -7829,7 +7829,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 3a1111dd542ebe94897ad5a12ce9d6a9, type: 3}
 --- !u!1 &1605572334
@@ -8783,7 +8783,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868731351}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -9137,7 +9137,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 3a1111dd542ebe94897ad5a12ce9d6a9, type: 3}
 --- !u!1 &1924693183
@@ -9479,8 +9479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1421e61033c5d90418ba4b0e38e7996c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPosition: {x: 0, y: 2.4, z: 0}
-  EndPosition1: {x: 0, y: 0.85, z: 0}
+  StartPosition: {x: 0, y: 5.86, z: 0}
+  EndPosition1: {x: 0, y: 0, z: 0}
   CurrentPosition: {x: 0, y: 0, z: 0}
   platform1: {fileID: 165115918}
 --- !u!136 &1976563204
