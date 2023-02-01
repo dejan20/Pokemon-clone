@@ -23,11 +23,6 @@ public class tplib : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (loadscene == 6)
-            {
-                Debug.Log("tpd");
-                character.transform.position = new Vector3(3.8f, 0.8f, -3.7f);
-            }
 
             SceneManager.LoadScene(loadscene);
         }

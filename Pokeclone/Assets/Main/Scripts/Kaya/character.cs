@@ -14,6 +14,8 @@ public class character : MonoBehaviour
 
     public float run = 5f;
 
+    public float speedCap = 10f;
+
     public bool hasshoes = false;
     public DialogueUI DialogueUI => dialogueUI;
 
@@ -43,6 +45,11 @@ public class character : MonoBehaviour
             else
             {
                 rigidbody.AddForce(move.normalized * Speed, ForceMode.Force);
+            }
+
+            if (rigidbody.velocity.magnitude > speedCap)
+            {
+                rigidbody.velocity = rigidbody.velocity.normalized * speedCap;
             }
         }
 
