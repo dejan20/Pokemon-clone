@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class tplib : MonoBehaviour
 {
     public int loadscene;
+    public GameObject character;
     // Start is called before the first frame update
     void Start()
     {
-        
+        character = GameObject.Find("character");
+        character.transform.position = new Vector3(3.8f, 0.8f, -3.7f);
     }
 
     // Update is called once per frame
@@ -21,12 +23,14 @@ public class tplib : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(loadscene);
-            Debug.Log("tpd");
-            
-        }
+            if (loadscene == 6)
+            {
+                Debug.Log("tpd");
+                character.transform.position = new Vector3(3.8f, 0.8f, -3.7f);
+            }
 
-        
+            SceneManager.LoadScene(loadscene);
+        }
     }
 }
 //comments

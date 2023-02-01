@@ -4,42 +4,40 @@ using UnityEngine;
 
 public class character : MonoBehaviour
 {
-    
+
 
     [SerializeField] private DialogueUI dialogueUI;
 
-    private CharacterController characterController;
+    private Rigidbody rigidbody;
 
-    public float Speed = 5f;
+    public float Speed = 0.1f;
 
     public float run = 10f;
 
     public bool hasshoes = false;
     public DialogueUI DialogueUI => dialogueUI;
 
-    public IInteractable Interactable { get; set;}
+    public IInteractable Interactable { get; set; }
 
 
 
     void Start()
     {
         Cursor.visible = false;
-        characterController = GetComponent<CharacterController>();
-        Physics.gravity = new Vector3(0, -1.0F, 0);
-
+        rigidbody = GetComponent<Rigidbody>();
     }
 
-    
+
     void Update()
     {
-        
+
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        characterController.Move(move.normalized * Time.deltaTime*Speed);
+        rigidbody.AddForce(move.normalized * Speed, ForceMode.VelocityChange);
 
-        if (Input.GetKey(KeyCode.LeftShift)&& hasshoes)
+        if (Input.GetKey(KeyCode.LeftShift) && hasshoes)
         {
-            characterController.Move(move.normalized * Time.deltaTime * run);
+            rigidbody.AddForce(move.normalized * run, ForceMode.VelocityChange);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
