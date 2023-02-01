@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class character : MonoBehaviour
 {
-
-
     [SerializeField] private DialogueUI dialogueUI;
 
     private Rigidbody rigidbody;
 
-    public float Speed = 2f;
+    public float speed = 2f;
+    public float runSpeed = 5f;
+    public float speedCap = 5f;
+    public bool hasShoes = false;
 
-    public float run = 5f;
-
-    public float speedCap = 10f;
-
-    public bool hasshoes = false;
     public DialogueUI DialogueUI => dialogueUI;
 
     public IInteractable Interactable { get; set; }
@@ -38,14 +34,13 @@ public class character : MonoBehaviour
         }
         else
         {
-            if (Input.GetKey(KeyCode.LeftShift) && hasshoes)
+            float currentSpeed = speed;
+            if (Input.GetKey(KeyCode.LeftShift) && hasShoes)
             {
-                rigidbody.AddForce(move.normalized * run, ForceMode.Force);
+                currentSpeed = runSpeed;
             }
-            else
-            {
-                rigidbody.AddForce(move.normalized * Speed, ForceMode.Force);
-            }
+
+            rigidbody.velocity = move.normalized * currentSpeed;
 
             if (rigidbody.velocity.magnitude > speedCap)
             {

@@ -634,6 +634,7 @@ MonoBehaviour:
   Back: {fileID: 292500425}
   playerBattleStation: {fileID: 1249824800}
   enemyBattleStation: {fileID: 405693468}
+  playerUnit: {fileID: 0}
   Dialog: {fileID: 201533437}
   playerHUD: {fileID: 1661646452}
   enemyHUD: {fileID: 1270116452}
@@ -2451,6 +2452,7 @@ MonoBehaviour:
   Back: {fileID: 292500425}
   playerBattleStation: {fileID: 1249824800}
   enemyBattleStation: {fileID: 405693468}
+  playerUnit: {fileID: 0}
   Dialog: {fileID: 201533437}
   playerHUD: {fileID: 1661646452}
   enemyHUD: {fileID: 1270116452}
@@ -3157,7 +3159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1829343441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3170,6 +3172,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b16e83af67e974bbc4f8d15a4cc69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  master: {fileID: 0}
+  spiritParty: {fileID: 0}
+  item: {fileID: 0}
+  test: {fileID: 0}
+  spirit: {fileID: 0}
+  potion: {fileID: 0}
 --- !u!114 &1829343442
 MonoBehaviour:
   m_ObjectHideFlags: 0

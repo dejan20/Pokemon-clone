@@ -70,7 +70,7 @@ public class BattleSystem2 : MonoBehaviour
 
                     partyUI.GetComponent<Canvas>().enabled = true;
                     //master.transform.GetChild(spiritParty.selectedSpirit).gameObject.SetActive(false);
-                    SceneManager.LoadScene(5);
+                    SceneManager.LoadScene(2);
             }
 
             j++;
