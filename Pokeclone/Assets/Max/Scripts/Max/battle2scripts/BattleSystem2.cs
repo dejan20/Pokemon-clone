@@ -373,7 +373,7 @@ public class BattleSystem2 : MonoBehaviour
         if (state != BattleState.PLAYERTURN)
             return;
         partyUI.GetComponent<Canvas>().enabled = true;
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(2);
         Debug.Log("Back to MainScene");
     }
 

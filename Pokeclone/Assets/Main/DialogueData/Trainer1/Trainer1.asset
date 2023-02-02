@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Trainer1
   m_EditorClassIdentifier: 
   dialogue:
-  - "Hey there, I'm a Pok\xE9mon trainer. I've been traveling and catching Pok\xE9mon
-    for years now. I'd love to battle with you. Are you up for it?"
+  - Hey there, I'm a Spirit trainer. I've been traveling and catching Spirits for
+    years now. I'd love to battle with you. Are you up for it?
   responses:
   - responseText: Yes, always!
     dialogueObject: {fileID: 11400000, guid: 7589848abbdd3934d955af06800af2cb, type: 2}
   - responseText: Nah, not right now.
     dialogueObject: {fileID: 11400000, guid: 6991c2159ddce8c46a4160a66b4dfe41, type: 2}
   HasSceneSwitch: 0
+  IsHealer: 0
   selectedScene: 0

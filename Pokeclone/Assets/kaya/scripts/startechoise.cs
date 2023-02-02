@@ -5,8 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class startechoise : MonoBehaviour
 {
+    public Canvas canvas1;
+    public Canvas canvas2;
 
-    
     public int tptoscene = 0;
     public SpiritParty spiritParty;
 
@@ -27,6 +28,9 @@ public class startechoise : MonoBehaviour
 
         spiritParty.AddSpirit();
 
+        canvas1.GetComponent<Canvas>().enabled = true;
+        canvas2.GetComponent<Canvas>().enabled = true;
+
         SceneManager.LoadScene(tptoscene);
     }
 
@@ -36,6 +40,9 @@ public class startechoise : MonoBehaviour
 
         spiritParty.AddSpirit();
 
+        canvas1.GetComponent<Canvas>().enabled = true;
+        canvas2.GetComponent<Canvas>().enabled = true;
+
         SceneManager.LoadScene(tptoscene);
     }
 
@@ -44,6 +51,9 @@ public class startechoise : MonoBehaviour
         spiritParty.firstSpirit = 4;
 
         spiritParty.AddSpirit();
+
+        canvas1.GetComponent<Canvas>().enabled = true;
+        canvas2.GetComponent<Canvas>().enabled = true;
 
         SceneManager.LoadScene(tptoscene);
     }

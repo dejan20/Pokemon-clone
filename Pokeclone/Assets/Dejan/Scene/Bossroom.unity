@@ -3292,7 +3292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26389f6ad8009d746a2cd502d5bde2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 031ddda8d1a6ece488089eb3510274aa, type: 2}
+  dialogueObject: {fileID: 11400000, guid: d8a6be56edf9944479d571467f4ddb07, type: 2}
 --- !u!136 &578686105
 CapsuleCollider:
   m_ObjectHideFlags: 0

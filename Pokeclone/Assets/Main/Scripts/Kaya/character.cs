@@ -13,6 +13,10 @@ public class character : MonoBehaviour
     public float speedCap = 5f;
     public bool hasShoes = false;
 
+    public Animator animator;
+
+    public GameObject playerbodyonly;
+
     public DialogueUI DialogueUI => dialogueUI;
 
     public IInteractable Interactable { get; set; }
@@ -54,6 +58,21 @@ public class character : MonoBehaviour
             {
                 Interactable.Interact(this);
             }
+        }
+
+        if (rigidbody.velocity.magnitude >= 0.1f)
+        {
+            float targetangle = Mathf.Atan2(move.z, -move.x) * Mathf.Rad2Deg;
+
+            playerbodyonly.transform.rotation = Quaternion.Euler(0f, targetangle, 0);
+        }
+        if (rigidbody.velocity.magnitude > 0)
+        {
+            animator.Play("mainwalk");
+        }
+        else if (rigidbody.velocity.magnitude <= 0)
+        {
+            animator.Play("idle");
         }
     }
 }
