@@ -24,6 +24,14 @@ public class platfromrise : MonoBehaviour
             SwitchActivated = true;
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            print("player left");
+            SwitchActivated = false;
+        }
+    }
 
     void Update()
     {
