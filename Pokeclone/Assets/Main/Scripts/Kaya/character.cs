@@ -19,7 +19,7 @@ public class character : MonoBehaviour
 
     public IInteractable Interactable { get; set;}
 
-
+    public GameObject playerbodyonly;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class character : MonoBehaviour
     
     void Update()
     {
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
 
         characterController.Move(move.normalized * Time.deltaTime*Speed);
 
@@ -48,5 +48,16 @@ public class character : MonoBehaviour
                 Interactable.Interact(this);
             }
         }
+        
+
+        if (move.magnitude >= 0.1f)
+        {
+            float targetangle = Mathf.Atan2(move.z, -move.x) * Mathf.Rad2Deg;
+
+            playerbodyonly.transform.rotation = Quaternion.Euler(0f, targetangle, 0);
+
+        }
+        
+
     }
 }
