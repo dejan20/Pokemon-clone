@@ -39,7 +39,7 @@ public class BUTTSFORBATTLE : MonoBehaviour
         spirit = master.transform.GetChild(0).gameObject;
         spirit.GetComponent<Unit>().currentHP += potion.heal;
 
-        //Destroy(inventory.ItemsList[0]);
+        Destroy(inventory.ItemsList[0]);
 
     }
     public void butt2()
