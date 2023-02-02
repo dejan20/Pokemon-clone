@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
+using System;
+using System.ComponentModel;
+using System.CodeDom;
 
 public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private DialogueObject testDialogue;
+    [SerializeField] SpiritParty spiritParty = new SpiritParty();
+
+    Unit unit;
 
     public bool IsOpen { get; private set; }
 
@@ -42,6 +49,26 @@ public class DialogueUI : MonoBehaviour
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
         }
 
+        if (dialogueObject.HasSceneSwitch == true)
+        {
+            SceneManager.LoadScene(dialogueObject.selectedScene);
+        }
+
+        if (dialogueObject.IsHealer == true)
+        {
+            int j = 0;
+
+            for (int i = 0; i < spiritParty.spiritList.Count; i++)
+            {
+                unit = spiritParty.spiritList[j].gameObject.GetComponent<Unit>();
+
+                unit.currentHP = unit.maxHP;
+                unit.isDead = false;
+
+                j++;
+            }
+        }
+
         if (dialogueObject.HasResponses)
         {
             responseHandler.ShowResponse(dialogueObject.Responses);
@@ -57,6 +84,5 @@ public class DialogueUI : MonoBehaviour
         IsOpen = false;
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
-
     }
 }

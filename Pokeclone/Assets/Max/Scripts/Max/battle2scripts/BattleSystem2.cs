@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Security.Cryptography.X509Certificates;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
@@ -30,7 +31,10 @@ public class BattleSystem2 : MonoBehaviour
     [SerializeField] GameObject randomSpirit;
     [SerializeField] private SpiritPartyUI spiritPartyUI;
 
-    public Canvas CanvasObject;  
+    public bool randomSpiritBool = true;
+    public int chosenSpirit = 0;
+
+    public Canvas CanvasObject;
 
     GameObject partyUI;
 
@@ -68,13 +72,13 @@ public class BattleSystem2 : MonoBehaviour
             {
                 Dialog.text = "You lost!";
 
-                    partyUI.GetComponent<Canvas>().enabled = true;
-                    //master.transform.GetChild(spiritParty.selectedSpirit).gameObject.SetActive(false);
-                    SceneManager.LoadScene(2);
+                partyUI.GetComponent<Canvas>().enabled = true;
+                //master.transform.GetChild(spiritParty.selectedSpirit).gameObject.SetActive(false);
+                SceneManager.LoadScene(5);
             }
 
             j++;
-            
+
             playerPrefab = master.transform.GetChild(spiritParty.selectedSpirit).gameObject;
             spiritParty.spiritList[spiritParty.selectedSpirit] = playerPrefab;
 
@@ -106,21 +110,28 @@ public class BattleSystem2 : MonoBehaviour
             playerHUD.SetHUD(playerUnit);
         }
 
-        if(enemyUnit.isDead == true)
+        if (enemyUnit.isDead == true)
         {
-            earnedXP = Random.Range(5,10);
+            earnedXP = Random.Range(5, 10);
             playerUnit.unitCurrentXP += earnedXP;
 
             Won();
 
-            partyUI.GetComponent<Canvas>().enabled = false;
-            SceneManager.LoadScene(5);
+            partyUI.GetComponent<Canvas>().enabled = true;
+            SceneManager.LoadScene(2);
         }
     }
 
     void Awake()
     {
-        randomSpiritInt = Random.Range(0,8);
+        if (randomSpiritBool == true)
+        {
+            randomSpiritInt = Random.Range(0,8);
+        }
+        else if (randomSpiritBool == false)
+        {
+            randomSpiritInt = chosenSpirit;
+        }
 
         spiritParty = GameObject.Find("character").GetComponent<SpiritParty>();
         spiritPrefabPlayer = spiritParty.spiritList[spiritParty.selectedSpirit];

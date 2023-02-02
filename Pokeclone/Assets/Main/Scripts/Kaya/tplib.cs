@@ -23,11 +23,8 @@ public class tplib : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
+            Debug.Log("Switching to scene " + loadscene);
             SceneManager.LoadScene(loadscene);
         }
     }
 }
-//comments
-//IMPORTANT!!!!
-//colider moet groter dan playercontroller

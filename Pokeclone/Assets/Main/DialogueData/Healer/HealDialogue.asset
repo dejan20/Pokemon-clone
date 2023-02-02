@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d821c6acf4ef9449c59461ec79b8a1, type: 3}
+  m_Name: HealDialogue
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Hello there! I'm a Spirit healer. I specialize in restoring the health of weary
+    Spirits. Would you like me to heal your Spirits?
+  responses:
+  - responseText: Yes, please.
+    dialogueObject: {fileID: 11400000, guid: 447004ff5b52fde4fa78300f85ba66dc, type: 2}
+  - responseText: No, thank you.
+    dialogueObject: {fileID: 11400000, guid: 6991c2159ddce8c46a4160a66b4dfe41, type: 2}
+  HasSceneSwitch: 0
+  IsHealer: 0
+  selectedScene: 0

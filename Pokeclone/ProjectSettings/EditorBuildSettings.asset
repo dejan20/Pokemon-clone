@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Dejan/Scene/Bossroom.unity
     guid: f79d6ee08bec4944cae05f167703fda6
+  - enabled: 1
+    path: Assets/Storm's mappie/Scenes/TrainerBattle.unity
+    guid: e0225dedf56b72b43811a416f0e6aea5
   m_configObjects: {}

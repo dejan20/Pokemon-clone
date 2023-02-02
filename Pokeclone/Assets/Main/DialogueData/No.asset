@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: No
   m_EditorClassIdentifier: 
   dialogue:
-  - Oh thats fine too!
+  - Oh thats fine!
   responses: []
+  HasSceneSwitch: 0
+  selectedScene: 0
