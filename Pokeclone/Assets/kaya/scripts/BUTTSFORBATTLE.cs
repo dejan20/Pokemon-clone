@@ -22,7 +22,8 @@ public class BUTTSFORBATTLE : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        master = GameObject.Find("master").GetComponent<master>();
+        spiritParty = GameObject.Find("character").GetComponent<SpiritParty>();
         inventory = GameObject.Find("character").GetComponent<INventory>();
         potion = item.GetComponent<Potion>();
     }
@@ -38,7 +39,7 @@ public class BUTTSFORBATTLE : MonoBehaviour
         spirit = master.transform.GetChild(0).gameObject;
         spirit.GetComponent<Unit>().currentHP += potion.heal;
 
-        Destroy(inventory.ItemsList[0]);
+        //Destroy(inventory.ItemsList[0]);
 
     }
     public void butt2()

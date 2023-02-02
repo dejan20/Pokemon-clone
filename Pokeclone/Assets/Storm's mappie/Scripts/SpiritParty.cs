@@ -39,14 +39,7 @@ public class SpiritParty : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            spiritList.Add(master.allSpiritList[firstSpirit]);
-            spiritPartyUI.SpiritPartyImages(i);
-            spiritPrefabPlayer = spiritList[selectedSpirit].gameObject;
-            spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3 (-320,1,90), Quaternion.identity);
-            //selectedSpirit++;
-            spiritPrefabPlayer.transform.SetParent(master.transform);
-            spiritList[selectedSpirit] = spiritPrefabPlayer;
-            i++;
+            AddSpirit();
         }
 
         if (spiritList.Count > 5)
@@ -107,6 +100,18 @@ public class SpiritParty : MonoBehaviour
 
             spiritSelector5.SetActive(true);
         }
+    }
+
+    public void AddSpirit()
+    {
+        spiritList.Add(master.allSpiritList[firstSpirit]);
+        spiritPartyUI.SpiritPartyImages(i);
+        spiritPrefabPlayer = spiritList[selectedSpirit].gameObject;
+        spiritPrefabPlayer = Instantiate(spiritPrefabPlayer, new Vector3(-320, 1, 90), Quaternion.identity);
+        //selectedSpirit++;
+        spiritPrefabPlayer.transform.SetParent(master.transform);
+        spiritList[selectedSpirit] = spiritPrefabPlayer;
+        i++;
     }
 
     public void IPlus()

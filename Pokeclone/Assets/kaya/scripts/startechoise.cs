@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class startechoise : MonoBehaviour
@@ -8,6 +9,7 @@ public class startechoise : MonoBehaviour
     
     public int tptoscene = 0;
     public SpiritParty spiritParty;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,7 @@ public class startechoise : MonoBehaviour
     {
         spiritParty.firstSpirit = 1;
 
+        spiritParty.AddSpirit();
 
         SceneManager.LoadScene(tptoscene);
     }
@@ -31,6 +34,7 @@ public class startechoise : MonoBehaviour
     {
         spiritParty.firstSpirit = 0;
 
+        spiritParty.AddSpirit();
 
         SceneManager.LoadScene(tptoscene);
     }
@@ -39,6 +43,7 @@ public class startechoise : MonoBehaviour
     {
         spiritParty.firstSpirit = 4;
 
+        spiritParty.AddSpirit();
 
         SceneManager.LoadScene(tptoscene);
     }

@@ -55,20 +55,15 @@ public class INventory : MonoBehaviour
         {
             distance = Vector3.Distance(itemPickup.transform.position, transform.position);
             Debug.Log("Work1?");
-
-            if (distance <= minimumDistance)
-            {
-                Debug.Log("Work?");
-                item1 = itemPickup;
-                ItemsList.Add(item1);
-                AddItem();
+            Debug.Log("Work?");
+            item1 = itemPickup;
+            ItemsList.Add(item1);
+            AddItem();
                 
                 
                 
                 
-                iimg = itemPickup.GetComponent<Image>();
-                
-            }
+            iimg = itemPickup.GetComponent<Image>();
 
 
         }
