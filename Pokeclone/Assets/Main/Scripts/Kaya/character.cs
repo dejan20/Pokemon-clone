@@ -8,6 +8,8 @@ public class character : MonoBehaviour
 
     [SerializeField] private DialogueUI dialogueUI;
 
+    public Animator animator;
+
     private CharacterController characterController;
 
     public float Speed = 5f;
@@ -57,7 +59,14 @@ public class character : MonoBehaviour
             playerbodyonly.transform.rotation = Quaternion.Euler(0f, targetangle, 0);
 
         }
-        
+        if (move.magnitude > 0)
+        {
+            animator.Play("mainwalk");
+        }
+        else if (move.magnitude <= 0)
+        {
+            animator.Play("idle");
+        }
 
     }
 }
