@@ -87,10 +87,17 @@ public class BuildingManager : MonoBehaviour
     {
         float xDiff = pos % gridSize;
         pos -= xDiff;
-        if(xDiff > (gridSize  / 2))
+
+        if (xDiff > (gridSize / 2))
         {
             pos += gridSize;
         }
+
+        if (xDiff * (-1f) > (gridSize / 2))
+        {
+            pos -= gridSize;
+        }
+
         return pos;
     }
 }
