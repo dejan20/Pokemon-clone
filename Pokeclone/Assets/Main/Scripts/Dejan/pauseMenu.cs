@@ -58,7 +58,7 @@ public class pauseMenu : MonoBehaviour
     }
     public void ClickToHome()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
     public void ClickTotestbattle()
     {
